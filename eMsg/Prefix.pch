@@ -1,0 +1,31 @@
+//
+//  Prefix.pch
+//  xcar
+//
+//  Created by 黄盼青 on 15/12/29.
+//  Copyright (c) 2015年 深蓝蕴. All rights reserved.
+//
+
+#ifndef xcar_Prefix_pch
+#define xcar_Prefix_pch
+
+#ifdef __OBJC__
+
+
+//自动布局限定
+//快速使用工具
+
+#import "SHMacroDefine.h"
+#import "UIViewController+HUD.h"
+
+#import "YZCommon.h"
+#import "PQUtil.h"
+//通用工具
+#import "Commons/Commons.h"
+#import "Masonry.h"
+#import "MBProgressHUD.h"
+#import "UIColor+Category.h"
+
+
+#endif
+#endif
