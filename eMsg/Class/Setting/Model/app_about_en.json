@@ -1,0 +1,37 @@
+ [
+  {
+  "id": 1,
+  "name": "v1.0.1",
+  "type": "custom",
+  "icon": "AppIcon60x60",
+  "value": ""
+  },
+  {
+  "id": 2,
+  "name": "Telephone:",
+  "type": "text",
+  "value": "4000-400-400"
+  },
+  {
+  "id": 3,
+  "name": "QQ:",
+  "type": "text",
+  "value": "11193159"
+  },
+  {
+  "id": 4,
+  "name": "Website:",
+  "type": "text",
+  "value": "www.epwings.com"
+  },
+  {
+  "id": 5,
+  "name": "Feedback",
+  "type": "info",
+  },
+  {
+  "id": 6,
+  "name": "Copyright",
+  "type": "info"
+  }
+]

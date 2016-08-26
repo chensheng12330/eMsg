@@ -1,0 +1,30 @@
+[
+  {
+  "id": 1,
+  "name": "您还未登陆",
+  "type": "custom",
+  "icon": "AppIcon60x60",
+  "value": ""
+  },
+  {
+  "id": 2,
+  "name": "设置",
+  "type": "image",
+  "icon": "SettingM",
+  "value": ""
+  },
+  {
+  "id": 3,
+  "name": "使用说明",
+  "type": "image",
+  "icon": "Instruction",
+  "value": "http://115.28.145.117/download/xcar/html/help.html"
+  },
+  {
+  "id": 5,
+  "name": "关于我们",
+  "type": "image",
+  "icon": "AboutUs",
+  "value": ""
+  }
+]

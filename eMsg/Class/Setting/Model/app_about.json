@@ -1,0 +1,37 @@
+ [
+  {
+  "id": 1,
+  "name": "v1.0.1",
+  "type": "custom",
+  "icon": "AppIcon60x60",
+  "value": ""
+  },
+  {
+  "id": 2,
+  "name": "服务热线:",
+  "type": "text",
+  "value": "4000-400-400"
+  },
+  {
+  "id": 3,
+  "name": "客服 QQ:",
+  "type": "text",
+  "value": "11193159"
+  },
+  {
+  "id": 4,
+  "name": "官方网站:",
+  "type": "text",
+  "value": "www.epwings.com"
+  },
+  {
+  "id": 5,
+  "name": "问题反馈",
+  "type": "info",
+  },
+  {
+  "id": 6,
+  "name": "检测版本",
+  "type": "info"
+  }
+]

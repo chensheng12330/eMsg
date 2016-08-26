@@ -1,0 +1,30 @@
+[
+  {
+  "id": 1,
+  "name": "Sign In",
+  "type": "custom",
+  "icon": "AppIcon60x60",
+  "value": ""
+  },
+  {
+  "id": 2,
+  "name": "Settings",
+  "type": "image",
+  "icon": "SettingM",
+  "value": ""
+  },
+  {
+  "id": 3,
+  "name": "Guide",
+  "type": "image",
+  "icon": "Instruction",
+  "value": "http://115.28.145.117/download/xcar/html/help.html"
+  },
+  {
+  "id": 5,
+  "name": "About",
+  "type": "image",
+  "icon": "AboutUs",
+  "value": ""
+  }
+]

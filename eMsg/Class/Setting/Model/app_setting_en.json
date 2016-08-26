@@ -1,0 +1,36 @@
+{
+    "Local Information": [
+             {
+             "id":1,
+             "name": "Notification",
+             "type": "switch"
+             },
+             {
+             "id":2,
+             "name": "Local Storage",
+             "type": "info"
+             },
+             {
+             "id":3,
+             "name": "Language",
+             "type": "info"
+             }
+             ],
+    "Device Information": [
+             {
+             "id":4,
+             "name": "Auto Download",
+             "type": "switch"
+             },
+             {
+             "id":5,
+             "name": "Sync Video",
+             "type": "switch"
+             },
+             {
+             "id":6,
+             "name": "Save Photo To Local Album",
+             "type": "switch"
+             }
+             ]
+}

@@ -1,0 +1,17 @@
+[
+  {
+  "id": 1,
+  "name": "Network cache",
+  "type": "text"
+  },
+  {
+  "id": 2,
+  "name": "Local cache",
+  "type": "text"
+  },
+  {
+  "id": 3,
+  "name": "Total capacity",
+  "type": "text"
+  }
+]

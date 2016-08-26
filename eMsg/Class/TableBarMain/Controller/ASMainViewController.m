@@ -10,6 +10,7 @@
 #import "SLYDefine.h"
 
 #import "SHHomeTableViewController.h"
+#import "SLYSettingViewController.h"
 
 #define TABBAR_HEIGHT 55.0f
 
@@ -63,11 +64,11 @@
     
     self.subVCS = [NSMutableArray array];
     
-    NSArray *titles    = @[@"首页",@"短信"];
-    NSArray *icons_nor = @[@"tab_home_nor",@"tab_my_nor"];
-    NSArray *icons_sel = @[@"tab_home_sel",@"tab_my_sel"];
+    NSArray *titles    = @[@"首页",@"短信",@"我的"];
+    NSArray *icons_nor = @[@"tab_home_nor",@"tab_image_nor",@"tab_my_nor"];
+    NSArray *icons_sel = @[@"tab_home_sel",@"tab_image_sel",@"tab_my_sel"];
     
-    NSArray *classes= @[@"SHHomeTableViewController",@"SHHomeTableViewController"];
+    NSArray *classes= @[@"SHHomeTableViewController",@"SHHomeTableViewController",@"SLYSettingViewController"];
     for (int i=0; i<classes.count; i++) {
         
         UIViewController *obj = [[NSClassFromString(classes[i]) alloc] init];

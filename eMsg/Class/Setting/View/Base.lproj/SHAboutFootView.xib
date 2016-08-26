@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SHSettingTableViewCell" rowHeight="100" id="m0k-Vu-GgL" customClass="SHSettingTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0k-Vu-GgL" id="DNk-24-8VT">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSG-d0-pRm">
+                        <rect key="frame" x="0.0" y="37" width="320" height="37"/>
+                        <state key="normal" title="使用条款和隐私政策"/>
+                        <variation key="widthClass=compact" fixedFrame="YES">
+                            <rect key="frame" x="0.0" y="5" width="320" height="33"/>
+                        </variation>
+                    </button>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CopyRight (C) 2015-2017 深蓝蕴科技  All rights reserved" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfB-Pj-jne">
+                        <rect key="frame" x="0.0" y="69" width="320" height="60"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                        <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="widthClass=compact" fixedFrame="YES">
+                            <rect key="frame" x="0.0" y="46" width="320" height="117"/>
+                        </variation>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="NfB-Pj-jne" secondAttribute="bottom" id="1Y5-iY-hPA"/>
+                    <constraint firstItem="fSG-d0-pRm" firstAttribute="leading" secondItem="DNk-24-8VT" secondAttribute="leading" id="Arx-eg-ucA"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="fSG-d0-pRm" secondAttribute="bottom" constant="47" id="C9C-Hu-wut"/>
+                    <constraint firstItem="NfB-Pj-jne" firstAttribute="leading" secondItem="fSG-d0-pRm" secondAttribute="leading" id="Csb-ll-gwN"/>
+                    <constraint firstItem="NfB-Pj-jne" firstAttribute="top" secondItem="DNk-24-8VT" secondAttribute="topMargin" constant="61" id="FbE-L1-40C"/>
+                    <constraint firstAttribute="trailing" secondItem="fSG-d0-pRm" secondAttribute="trailing" id="OTn-56-jVS"/>
+                    <constraint firstItem="fSG-d0-pRm" firstAttribute="top" secondItem="DNk-24-8VT" secondAttribute="topMargin" constant="29" id="g4i-ft-8Wj"/>
+                    <constraint firstItem="fSG-d0-pRm" firstAttribute="trailing" secondItem="NfB-Pj-jne" secondAttribute="trailing" id="jmj-gf-YrH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <gestureRecognizers/>
+            <connections>
+                <outlet property="btnButton" destination="fSG-d0-pRm" id="Ios-OL-cRB"/>
+                <outlet property="lbDetail" destination="NfB-Pj-jne" id="6GU-FS-64o"/>
+            </connections>
+            <point key="canvasLocation" x="344" y="447"/>
+        </tableViewCell>
+    </objects>
+</document>

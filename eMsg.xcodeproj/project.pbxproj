@@ -24,6 +24,34 @@
 		581230D71C488AC100C578A0 /* YZCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 581230D61C488AC100C578A0 /* YZCommon.m */; };
 		582F6EB21C4C82DD005CB10C /* SHURLConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 582F6EB11C4C82DD005CB10C /* SHURLConfig.m */; };
 		582F6EB51C4CAF43005CB10C /* SLYBaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 582F6EB41C4CAF43005CB10C /* SLYBaseEntity.m */; };
+		587511C01D70412A0034D583 /* SLYUserInfoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5875118F1D70412A0034D583 /* SLYUserInfoTableViewController.xib */; };
+		587511C11D70412A0034D583 /* SLYUserInfoTableViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = 587511911D70412A0034D583 /* SLYUserInfoTableViewController.strings */; };
+		587511C21D70412A0034D583 /* SLYAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587511941D70412A0034D583 /* SLYAboutTableViewController.m */; };
+		587511C31D70412A0034D583 /* SLYAppSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587511961D70412A0034D583 /* SLYAppSettingTableViewController.m */; };
+		587511C41D70412A0034D583 /* SLYAppSettingTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 587511971D70412A0034D583 /* SLYAppSettingTableViewController.xib */; };
+		587511C71D70412A0034D583 /* SLYSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5875119D1D70412A0034D583 /* SLYSettingViewController.m */; };
+		587511C81D70412A0034D583 /* SLYUserInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5875119F1D70412A0034D583 /* SLYUserInfoTableViewController.m */; };
+		587511C91D70412A0034D583 /* SLYWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587511A11D70412A0034D583 /* SLYWebViewController.m */; };
+		587511CA1D70412A0034D583 /* SLYWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 587511A21D70412A0034D583 /* SLYWebViewController.xib */; };
+		587511CB1D70412A0034D583 /* app_about.json in Resources */ = {isa = PBXBuildFile; fileRef = 587511A51D70412A0034D583 /* app_about.json */; };
+		587511CC1D70412A0034D583 /* app_about_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 587511A61D70412A0034D583 /* app_about_en.json */; };
+		587511CD1D70412A0034D583 /* app_device.json in Resources */ = {isa = PBXBuildFile; fileRef = 587511A71D70412A0034D583 /* app_device.json */; };
+		587511CE1D70412A0034D583 /* app_device_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 587511A81D70412A0034D583 /* app_device_en.json */; };
+		587511CF1D70412A0034D583 /* app_setting.json in Resources */ = {isa = PBXBuildFile; fileRef = 587511A91D70412A0034D583 /* app_setting.json */; };
+		587511D01D70412A0034D583 /* app_setting_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 587511AA1D70412A0034D583 /* app_setting_en.json */; };
+		587511D11D70412A0034D583 /* device_setting.json in Resources */ = {isa = PBXBuildFile; fileRef = 587511AB1D70412A0034D583 /* device_setting.json */; };
+		587511D21D70412A0034D583 /* device_setting_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 587511AC1D70412A0034D583 /* device_setting_en.json */; };
+		587511D31D70412A0034D583 /* setting.json in Resources */ = {isa = PBXBuildFile; fileRef = 587511AD1D70412A0034D583 /* setting.json */; };
+		587511D41D70412A0034D583 /* setting_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 587511AE1D70412A0034D583 /* setting_en.json */; };
+		587511D51D70412A0034D583 /* SLYJsonLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 587511B01D70412A0034D583 /* SLYJsonLoad.m */; };
+		587511D61D70412A0034D583 /* user_info.json in Resources */ = {isa = PBXBuildFile; fileRef = 587511B11D70412A0034D583 /* user_info.json */; };
+		587511D71D70412A0034D583 /* user_info_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 587511B21D70412A0034D583 /* user_info_en.json */; };
+		587511D81D70412A0034D583 /* SHAboutFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 587511B41D70412A0034D583 /* SHAboutFootView.xib */; };
+		587511D91D70412A0034D583 /* SHAboutFootView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 587511B61D70412A0034D583 /* SHAboutFootView.strings */; };
+		587511DA1D70412A0034D583 /* SHSettingHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 587511B81D70412A0034D583 /* SHSettingHeadTableViewCell.xib */; };
+		587511DD1D70412A0034D583 /* SHSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 587511BC1D70412A0034D583 /* SHSwitchTableViewCell.xib */; };
+		587511DE1D70412A0034D583 /* SHTextInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 587511BD1D70412A0034D583 /* SHTextInfoTableViewCell.xib */; };
+		587511DF1D70412A0034D583 /* SHUserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 587511BE1D70412A0034D583 /* SHUserInfoTableViewCell.xib */; };
 		589E93791C53676F007384C8 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 589E93781C53676F007384C8 /* CoreText.framework */; };
 		589E937F1C536CE5007384C8 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 589E937E1C536CE5007384C8 /* libiconv.tbd */; };
 		589E93811C536CF7007384C8 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 589E93801C536CF7007384C8 /* libbz2.tbd */; };
@@ -131,6 +159,42 @@
 		582F6EB11C4C82DD005CB10C /* SHURLConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHURLConfig.m; sourceTree = "<group>"; };
 		582F6EB31C4CAF43005CB10C /* SLYBaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYBaseEntity.h; sourceTree = "<group>"; };
 		582F6EB41C4CAF43005CB10C /* SLYBaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYBaseEntity.m; sourceTree = "<group>"; };
+		587511901D70412A0034D583 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SLYUserInfoTableViewController.xib; sourceTree = "<group>"; };
+		587511921D70412A0034D583 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SLYUserInfoTableViewController.strings; sourceTree = "<group>"; };
+		587511931D70412A0034D583 /* SLYAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYAboutTableViewController.h; sourceTree = "<group>"; };
+		587511941D70412A0034D583 /* SLYAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYAboutTableViewController.m; sourceTree = "<group>"; };
+		587511951D70412A0034D583 /* SLYAppSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYAppSettingTableViewController.h; sourceTree = "<group>"; };
+		587511961D70412A0034D583 /* SLYAppSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYAppSettingTableViewController.m; sourceTree = "<group>"; };
+		587511971D70412A0034D583 /* SLYAppSettingTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLYAppSettingTableViewController.xib; sourceTree = "<group>"; };
+		5875119C1D70412A0034D583 /* SLYSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYSettingViewController.h; sourceTree = "<group>"; };
+		5875119D1D70412A0034D583 /* SLYSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYSettingViewController.m; sourceTree = "<group>"; };
+		5875119E1D70412A0034D583 /* SLYUserInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYUserInfoTableViewController.h; sourceTree = "<group>"; };
+		5875119F1D70412A0034D583 /* SLYUserInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYUserInfoTableViewController.m; sourceTree = "<group>"; };
+		587511A01D70412A0034D583 /* SLYWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYWebViewController.h; sourceTree = "<group>"; };
+		587511A11D70412A0034D583 /* SLYWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYWebViewController.m; sourceTree = "<group>"; };
+		587511A21D70412A0034D583 /* SLYWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLYWebViewController.xib; sourceTree = "<group>"; };
+		587511A31D70412A0034D583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SLYUserInfoTableViewController.strings"; sourceTree = "<group>"; };
+		587511A51D70412A0034D583 /* app_about.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = app_about.json; sourceTree = "<group>"; };
+		587511A61D70412A0034D583 /* app_about_en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = app_about_en.json; sourceTree = "<group>"; };
+		587511A71D70412A0034D583 /* app_device.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = app_device.json; sourceTree = "<group>"; };
+		587511A81D70412A0034D583 /* app_device_en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = app_device_en.json; sourceTree = "<group>"; };
+		587511A91D70412A0034D583 /* app_setting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = app_setting.json; sourceTree = "<group>"; };
+		587511AA1D70412A0034D583 /* app_setting_en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = app_setting_en.json; sourceTree = "<group>"; };
+		587511AB1D70412A0034D583 /* device_setting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = device_setting.json; sourceTree = "<group>"; };
+		587511AC1D70412A0034D583 /* device_setting_en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = device_setting_en.json; sourceTree = "<group>"; };
+		587511AD1D70412A0034D583 /* setting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = setting.json; sourceTree = "<group>"; };
+		587511AE1D70412A0034D583 /* setting_en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = setting_en.json; sourceTree = "<group>"; };
+		587511AF1D70412A0034D583 /* SLYJsonLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYJsonLoad.h; sourceTree = "<group>"; };
+		587511B01D70412A0034D583 /* SLYJsonLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYJsonLoad.m; sourceTree = "<group>"; };
+		587511B11D70412A0034D583 /* user_info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user_info.json; sourceTree = "<group>"; };
+		587511B21D70412A0034D583 /* user_info_en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user_info_en.json; sourceTree = "<group>"; };
+		587511B51D70412A0034D583 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SHAboutFootView.xib; sourceTree = "<group>"; };
+		587511B71D70412A0034D583 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SHAboutFootView.strings; sourceTree = "<group>"; };
+		587511B81D70412A0034D583 /* SHSettingHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSettingHeadTableViewCell.xib; sourceTree = "<group>"; };
+		587511BC1D70412A0034D583 /* SHSwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSwitchTableViewCell.xib; sourceTree = "<group>"; };
+		587511BD1D70412A0034D583 /* SHTextInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHTextInfoTableViewCell.xib; sourceTree = "<group>"; };
+		587511BE1D70412A0034D583 /* SHUserInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHUserInfoTableViewCell.xib; sourceTree = "<group>"; };
+		587511BF1D70412A0034D583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SHAboutFootView.strings"; sourceTree = "<group>"; };
 		589E93761C536762007384C8 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		589E93781C53676F007384C8 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		589E937A1C53677D007384C8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -371,6 +435,71 @@
 			path = YZCommon;
 			sourceTree = "<group>";
 		};
+		5875118D1D70412A0034D583 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				5875118E1D70412A0034D583 /* Controller */,
+				587511A41D70412A0034D583 /* Model */,
+				587511B31D70412A0034D583 /* View */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		5875118E1D70412A0034D583 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5875118F1D70412A0034D583 /* SLYUserInfoTableViewController.xib */,
+				587511911D70412A0034D583 /* SLYUserInfoTableViewController.strings */,
+				587511931D70412A0034D583 /* SLYAboutTableViewController.h */,
+				587511941D70412A0034D583 /* SLYAboutTableViewController.m */,
+				587511951D70412A0034D583 /* SLYAppSettingTableViewController.h */,
+				587511961D70412A0034D583 /* SLYAppSettingTableViewController.m */,
+				587511971D70412A0034D583 /* SLYAppSettingTableViewController.xib */,
+				5875119C1D70412A0034D583 /* SLYSettingViewController.h */,
+				5875119D1D70412A0034D583 /* SLYSettingViewController.m */,
+				5875119E1D70412A0034D583 /* SLYUserInfoTableViewController.h */,
+				5875119F1D70412A0034D583 /* SLYUserInfoTableViewController.m */,
+				587511A01D70412A0034D583 /* SLYWebViewController.h */,
+				587511A11D70412A0034D583 /* SLYWebViewController.m */,
+				587511A21D70412A0034D583 /* SLYWebViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		587511A41D70412A0034D583 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				587511A51D70412A0034D583 /* app_about.json */,
+				587511A61D70412A0034D583 /* app_about_en.json */,
+				587511A71D70412A0034D583 /* app_device.json */,
+				587511A81D70412A0034D583 /* app_device_en.json */,
+				587511A91D70412A0034D583 /* app_setting.json */,
+				587511AA1D70412A0034D583 /* app_setting_en.json */,
+				587511AB1D70412A0034D583 /* device_setting.json */,
+				587511AC1D70412A0034D583 /* device_setting_en.json */,
+				587511AD1D70412A0034D583 /* setting.json */,
+				587511AE1D70412A0034D583 /* setting_en.json */,
+				587511AF1D70412A0034D583 /* SLYJsonLoad.h */,
+				587511B01D70412A0034D583 /* SLYJsonLoad.m */,
+				587511B11D70412A0034D583 /* user_info.json */,
+				587511B21D70412A0034D583 /* user_info_en.json */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		587511B31D70412A0034D583 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				587511B41D70412A0034D583 /* SHAboutFootView.xib */,
+				587511B61D70412A0034D583 /* SHAboutFootView.strings */,
+				587511B81D70412A0034D583 /* SHSettingHeadTableViewCell.xib */,
+				587511BC1D70412A0034D583 /* SHSwitchTableViewCell.xib */,
+				587511BD1D70412A0034D583 /* SHTextInfoTableViewCell.xib */,
+				587511BE1D70412A0034D583 /* SHUserInfoTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		58DB26481C33B73400CBAD58 /* UIViewController_HUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +687,7 @@
 		58FA624F1D6F3DDB009667A6 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				5875118D1D70412A0034D583 /* Setting */,
 				58FA62501D6F3DDB009667A6 /* HomePage */,
 				58FA62581D6F3DDB009667A6 /* TableBarMain */,
 			);
@@ -928,11 +1058,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				587511C41D70412A0034D583 /* SLYAppSettingTableViewController.xib in Resources */,
+				587511C11D70412A0034D583 /* SLYUserInfoTableViewController.strings in Resources */,
 				58FA61D91D6F24E1009667A6 /* LICENSE in Resources */,
+				587511DF1D70412A0034D583 /* SHUserInfoTableViewCell.xib in Resources */,
+				587511D21D70412A0034D583 /* device_setting_en.json in Resources */,
 				883ABE971C3372C1009DF99B /* Localizable.strings in Resources */,
+				587511D81D70412A0034D583 /* SHAboutFootView.xib in Resources */,
+				587511D61D70412A0034D583 /* user_info.json in Resources */,
+				587511D31D70412A0034D583 /* setting.json in Resources */,
+				587511D91D70412A0034D583 /* SHAboutFootView.strings in Resources */,
+				587511DA1D70412A0034D583 /* SHSettingHeadTableViewCell.xib in Resources */,
+				587511DE1D70412A0034D583 /* SHTextInfoTableViewCell.xib in Resources */,
+				587511D71D70412A0034D583 /* user_info_en.json in Resources */,
 				58FA61DC1D6F24E1009667A6 /* LICENSE in Resources */,
+				587511D41D70412A0034D583 /* setting_en.json in Resources */,
+				587511CD1D70412A0034D583 /* app_device.json in Resources */,
+				587511CE1D70412A0034D583 /* app_device_en.json in Resources */,
+				587511C01D70412A0034D583 /* SLYUserInfoTableViewController.xib in Resources */,
+				587511CC1D70412A0034D583 /* app_about_en.json in Resources */,
 				58FA61EB1D6F24E1009667A6 /* MJRefresh.bundle in Resources */,
 				880C851F1C32546C00165087 /* Assets.xcassets in Resources */,
+				587511D01D70412A0034D583 /* app_setting_en.json in Resources */,
+				587511DD1D70412A0034D583 /* SHSwitchTableViewCell.xib in Resources */,
+				587511CF1D70412A0034D583 /* app_setting.json in Resources */,
+				587511CA1D70412A0034D583 /* SLYWebViewController.xib in Resources */,
+				587511CB1D70412A0034D583 /* app_about.json in Resources */,
+				587511D11D70412A0034D583 /* device_setting.json in Resources */,
 				58FA62651D6F3DDB009667A6 /* SHSettingTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -963,17 +1115,22 @@
 				58FA62121D6F267E009667A6 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				8867FCA41C92C893005F82B6 /* AFNetworkReachabilityManager.m in Sources */,
 				8867FCC21C92C930005F82B6 /* UIButton+AFNetworking.m in Sources */,
+				587511C31D70412A0034D583 /* SLYAppSettingTableViewController.m in Sources */,
 				58FA62111D6F267E009667A6 /* NSArray+MASAdditions.m in Sources */,
 				58DB26591C33BA0100CBAD58 /* NSString+Category.m in Sources */,
 				58FA61DE1D6F24E1009667A6 /* MJRefreshBackFooter.m in Sources */,
 				58FA620B1D6F267E009667A6 /* MASCompositeConstraint.m in Sources */,
+				587511D51D70412A0034D583 /* SLYJsonLoad.m in Sources */,
+				587511C71D70412A0034D583 /* SLYSettingViewController.m in Sources */,
 				58FA61EC1D6F24E1009667A6 /* MJRefreshConst.m in Sources */,
 				8884CF0C1C5A0B5A003C795D /* SLYFullScreenViewController.m in Sources */,
 				58FA61E41D6F24E1009667A6 /* MJRefreshAutoStateFooter.m in Sources */,
 				58FA620F1D6F267E009667A6 /* MASViewAttribute.m in Sources */,
 				8867FCA61C92C893005F82B6 /* AFURLRequestSerialization.m in Sources */,
 				58FA61EF1D6F24E1009667A6 /* UIView+MJExtension.m in Sources */,
+				587511C21D70412A0034D583 /* SLYAboutTableViewController.m in Sources */,
 				E312F3CA1C43AB3C0041134F /* YZFileManage.m in Sources */,
+				587511C81D70412A0034D583 /* SLYUserInfoTableViewController.m in Sources */,
 				58FA62691D6F3DDB009667A6 /* SLYUser.m in Sources */,
 				58FA62641D6F3DDB009667A6 /* SHSettingTableViewCell.m in Sources */,
 				58FA61E51D6F24E1009667A6 /* MJRefreshBackGifFooter.m in Sources */,
@@ -1005,6 +1162,7 @@
 				8867FCA51C92C893005F82B6 /* AFSecurityPolicy.m in Sources */,
 				885C9E511C326A2100351BED /* PQAlertView.m in Sources */,
 				582F6EB21C4C82DD005CB10C /* SHURLConfig.m in Sources */,
+				587511C91D70412A0034D583 /* SLYWebViewController.m in Sources */,
 				884A1F321C33788D00476D28 /* AppDelegate+PushNotification.m in Sources */,
 				8884CF091C5A0ACE003C795D /* SLYNavigationController.m in Sources */,
 				58FA61E01D6F24E1009667A6 /* MJRefreshFooter.m in Sources */,
@@ -1048,6 +1206,40 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		5875118F1D70412A0034D583 /* SLYUserInfoTableViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				587511901D70412A0034D583 /* Base */,
+			);
+			name = SLYUserInfoTableViewController.xib;
+			sourceTree = "<group>";
+		};
+		587511911D70412A0034D583 /* SLYUserInfoTableViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				587511921D70412A0034D583 /* en */,
+				587511A31D70412A0034D583 /* zh-Hans */,
+			);
+			name = SLYUserInfoTableViewController.strings;
+			sourceTree = "<group>";
+		};
+		587511B41D70412A0034D583 /* SHAboutFootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				587511B51D70412A0034D583 /* Base */,
+			);
+			name = SHAboutFootView.xib;
+			sourceTree = "<group>";
+		};
+		587511B61D70412A0034D583 /* SHAboutFootView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				587511B71D70412A0034D583 /* en */,
+				587511BF1D70412A0034D583 /* zh-Hans */,
+			);
+			name = SHAboutFootView.strings;
+			sourceTree = "<group>";
+		};
 		883ABE991C3372C1009DF99B /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

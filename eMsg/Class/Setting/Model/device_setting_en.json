@@ -1,0 +1,43 @@
+{
+    "Basic information": [
+             {
+             "id":1,
+             "name": "Name",
+             "type": "info"
+             },
+             {
+             "id":2,
+             "name": "Password",
+             "type": "info"
+             }
+             ],
+    "Parameter setting": [
+             {
+             "id":3,
+             "name": "Video Quality",
+             "type": "text"
+             },
+             {
+             "id":4,
+             "name": "Image Quality",
+             "type": "info"
+             },
+             {
+             "id":6,
+             "name": "Collision Induction System",
+             "type": "info"
+             }
+             ,{
+             "id":5,
+             "name": "White Balance",
+             "type": "info"
+             }
+             ],
+    "Time setting": [
+             {
+             "id":7,
+             "name": "Sync Time",
+             "type": "info"
+             }
+    ]
+}

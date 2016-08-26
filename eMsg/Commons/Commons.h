@@ -38,6 +38,7 @@
 ///网络
 #import "AFNetworking.h"
 #import "YZFileManage.h"
+#import "SLYJsonLoad.h"
 
 #endif
 
