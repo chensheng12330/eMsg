@@ -51,7 +51,7 @@
      [NSDictionary dictionaryWithObjectsAndKeys:RGBACOLOR(245, 245, 245, 1), NSForegroundColorAttributeName, [UIFont fontWithName:@ "HelveticaNeue-CondensedBlack" size:17.0], NSFontAttributeName, nil]];
     
     
-    [self customNavigationView:0];
+    //[self customNavigationView:0];
     [self setupSubviews];
     
     return;
@@ -72,6 +72,7 @@
     for (int i=0; i<classes.count; i++) {
         
         UIViewController *obj = [[NSClassFromString(classes[i]) alloc] init];
+        
         if (i == 0) {
  //           self.discoverVC = (SLYDiscoverViewController *)obj;
         }else if (i==2){
@@ -88,7 +89,9 @@
         [self unSelectedTapTabBarItems:obj.tabBarItem];
         [self selectedTapTabBarItems:obj.tabBarItem];
         
-        [self.subVCS addObject:obj];
+        UINavigationController  *navC = [[UINavigationController alloc]initWithRootViewController:obj];
+        navC.navigationBar.translucent = YES;
+        [self.subVCS addObject:navC];
     }
     
     self.viewControllers = self.subVCS;
@@ -100,7 +103,7 @@
 
 #pragma mark - UITabBarDelegate
 
-- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+- (void)tabBar1:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
     if (item.tag == 0) {
         [self customNavigationView:item.tag];

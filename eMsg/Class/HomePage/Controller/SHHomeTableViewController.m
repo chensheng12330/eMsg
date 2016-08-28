@@ -6,15 +6,19 @@
 //  Copyright © 2016年 深蓝蕴. All rights reserved.
 //
 
-#define SH_APP_Set_loc_key (@"本地相关")
-#define SH_APP_Set_dev_key (@"设备相关")
+#define SH_APP_Set_loc_key (@"小号属性")
+#define SH_APP_Set_dev_key (@"小号列表")
 
 #import "SHHomeTableViewController.h"
 #import "SHSettingTableViewCell.h"
+#import "PQActionSheet.h"
+#import "SHItemListTableViewController.h"
 
-@interface SHHomeTableViewController ()
+@interface SHHomeTableViewController ()<PQActionSheetDelegate>
 @property (strong, nonatomic) NSDictionary *dataSource;
 @property (nonatomic, strong) NSArray *keys;
+
+@property (nonatomic,strong) NSArray *arSP;// 运营商列表
 @end
 
 @implementation SHHomeTableViewController
@@ -22,30 +26,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.arSP = @[@"[所有]",@"[移动]",@"[联通]",@"[电信]"];
+    self.clearsSelectionOnViewWillAppear = NO;
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
     [self reloadData];
 }
 
 -(void) reloadData {
     
-    //self.keys = @[SH_APP_Set_loc_key,SH_APP_Set_dev_key];
+    self.keys = @[SH_APP_Set_loc_key,SH_APP_Set_dev_key];
     
-    //NSDictionary *arData = [SHJL objectForJsonFileName:@"app_setting"];
+    NSDictionary *arData = [SHJL objectForJsonFileName:@"home_setting"];
     
-    //self.dataSource = [NSDictionary dictionaryWithDictionary:arData];
+    self.dataSource = [NSDictionary dictionaryWithDictionary:arData];
     
-    //[self.tableView reloadData];
+    [self.tableView reloadData];
     return;
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataSource.count;
+    //return self.dataSource.count;
+    return self.keys.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -68,7 +74,7 @@
     
     NSString *cellIdentifier = nil;
     
-    /*
+    
     SHJsonLoadType jlType = [SHJL type:dataInfo];
     if (jlType == eJL_switch) {
         cellIdentifier = cellIdentifierN;
@@ -98,7 +104,6 @@
     
     if (tid==1) {
         //值设置
-        [cell.swSwitch addTarget:self action:@selector(switchActionForTouch:) forControlEvents:UIControlEventTouchUpInside];
     }
     else if (tid==2){
         [cell.lbDetail setText:@""];
@@ -124,9 +129,9 @@
         
         
     }
-     */
     
-    return nil;
+    
+    return cell;
 }
 
 -(void)switchActionForTouch:(UISwitch*)sender
@@ -184,15 +189,23 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    /*
+    
     NSDictionary *dataInfo = self.dataSource[self.keys[indexPath.section]][indexPath.row];
     NSInteger tid = [SHJL tid:dataInfo];
     
-    
-    if (tid==2) { //本地存储
-        SLYDeviceInfoTableViewController * deviceVC = [[SLYDeviceInfoTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        deviceVC.title = [SHJL name:dataInfo];
-        [self.navigationController pushViewController:deviceVC animated:YES];
+    if (tid==1) {
+        
+        PQActionSheet *sheet = [[PQActionSheet alloc] initWithTitle:@"运营商类型"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:self.arSP[0],self.arSP[1],self.arSP[2],self.arSP[3],nil];
+        sheet.tag = tid;
+        [sheet show];
+        
+    }
+    else if (tid==2) {
+        SHItemListTableViewController *itemListVC = [[SHItemListTableViewController alloc]init];
+        [self.navigationController pushViewController:itemListVC animated:YES];
     }
     else if (tid==3)
     {
@@ -207,9 +220,14 @@
         [sheet show];
         
     }
-     */
+    
     return;
 }
 
+- (void)actionSheet:(PQActionSheet *)actionSheet
+clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"PQASheet: %ld Index:%ld", actionSheet.tag, buttonIndex);
+}
 
 @end

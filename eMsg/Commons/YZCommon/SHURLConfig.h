@@ -19,6 +19,8 @@
 //! 获取接口主地址
 -(NSString*) getHost;
 
+-(NSString*) getArea;
+
 //! 登陆接口
 -(NSString*) getLoginForU:(NSString*)uName P:(NSString*) pWd;
 

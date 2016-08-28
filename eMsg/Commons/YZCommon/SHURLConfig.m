@@ -66,8 +66,14 @@ static SHURLConfig *_sharedURLConfig= nil;
  */
 -(NSString*) getHost
 {
-    return @"http://120.55.163.83/chelubao/App/Api/app.php";
+    return @"http://api.ema6.com:20161";
 }
+
+-(NSString*) getArea
+{
+    return [NSString stringWithFormat:@"%@/Api/userGetArea",[self getHost]];
+}
+
 
 -(NSString*) getLoginForU:(NSString*)uName P:(NSString*) pWd
 {

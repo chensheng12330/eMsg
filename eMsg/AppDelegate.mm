@@ -127,34 +127,35 @@
         if (self.mainController == nil) {
             self.mainController = [[ASMainViewController alloc] init];
             
-            nav = [[SLYNavigationController alloc] initWithRootViewController:self.mainController];
+           // nav = [[SLYNavigationController alloc] initWithRootViewController:self.mainController];
         }else{
-            nav  = self.mainController.navigationController;
+           // nav  = self.mainController.navigationController;
         }
         
         COM.mainVC = self.mainController;
-        nav.navigationBar.translucent = NO;
+        //nav.navigationBar.translucent = NO;
+        self.window.rootViewController = self.mainController;
+        self.rootViewController = nil;
         
     }else{//登陆失败加载登陆页面控制器
         _mainController = nil;
         ASLoginViewController *loginController = [[ASLoginViewController alloc] init];
         nav = [[SLYNavigationController alloc] initWithRootViewController:loginController];
+        
+        //设置7.0以下的导航栏
+        if ([UIDevice currentDevice].systemVersion.floatValue < 7.0){
+            nav.navigationBar.barStyle = UIBarStyleDefault;
+            [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"titleBar"]
+                                    forBarMetrics:UIBarMetricsDefault];
+            nav.navigationBar.backgroundColor = RGBACOLOR(37, 182, 237, 1);
+            [nav.navigationBar.layer setMasksToBounds:YES];
+        }
+        //[nav setNavigationBarHidden:NO];
+        
+        self.window.rootViewController = nav;
+        self.rootViewController = nav;
     }
     
-    //设置7.0以下的导航栏
-    if ([UIDevice currentDevice].systemVersion.floatValue < 7.0){
-        nav.navigationBar.barStyle = UIBarStyleDefault;
-        [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"titleBar"]
-                                forBarMetrics:UIBarMetricsDefault];
-        nav.navigationBar.backgroundColor = RGBACOLOR(37, 182, 237, 1);
-        [nav.navigationBar.layer setMasksToBounds:YES];
-    }
-    
-    self.window.rootViewController = nav;
-    
-    self.rootViewController = nav;
-    
-    [nav setNavigationBarHidden:NO];
     
     return;
 }

@@ -8,5 +8,5 @@
 
 #import <UIKit/UIKit.h>
 //! 用户设置管理页面
-@interface SLYSettingViewController : UIViewController
+@interface SLYSettingViewController : UITableViewController
 @end

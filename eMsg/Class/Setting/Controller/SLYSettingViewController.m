@@ -1,282 +1,220 @@
 //
-//  SLYSettingViewController.m
+//  SLYAppSettingTableViewController.m
 //  xcar
 //
-//  Created by sherwin on 15/12/30.
-//  Copyright © 2015年 深蓝蕴. All rights reserved.
+//  Created by sherwin on 16/1/9.
+//  Copyright © 2016年 深蓝蕴. All rights reserved.
 //
 
-#import "SLYWebViewController.h"
-#import "SHSettingTableViewCell.h"
+#define SH_APP_Set_loc_key (@"本地相关")
+#define SH_APP_Set_dev_key (@"设备相关")
+
 #import "SLYSettingViewController.h"
-#import "SLYUserInfoTableViewController.h"
-#import "SLYAppSettingTableViewController.h"
-#import "SLYAboutTableViewController.h"
-#import "UIImageView+AFNetworking.h"
 
-@interface SLYSettingViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "SHSettingTableViewCell.h"
+#import "SLYWebViewController.h"
+#import "PQActionSheet.h"
 
-@property (strong,nonatomic)  UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *dataSource;
+@interface SLYSettingViewController ()<PQActionSheetDelegate>
+@property (strong, nonatomic) NSDictionary *dataSource;
+@property (nonatomic, strong) NSArray *keys;
 @end
 
 @implementation SLYSettingViewController
 
--(void)dealloc
-{
-    NSLog(@"%s---->dealloc",__func__);
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-//    self.title = @"关于";
-    self .automaticallyAdjustsScrollViewInsets = NO;
-    [self installTableView];
     
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self reloadData];
-    
-    return;
 }
 
-
-
-#pragma mark - View init &load
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.tableView reloadData];
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
--(void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
-   // NSLog(@"about = %@",self.tableView);
-}
-
--(void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-   // self.tableView.contentOffset = CGPointMake(0, 0);
-    
-}
-
-/**
- *  初始化TableView
- */
--(void)installTableView {
-    
-    UIView *anchorView = [[UIView alloc] init];
-    [self.view addSubview:anchorView];
-    [anchorView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mas_topLayoutGuide).offset(-1.0f);
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-        make.height.mas_equalTo(1.0f);
-    }];
-
-    self.tableView = [[UITableView alloc] init];
-    _tableView.delegate     = self;
-    _tableView.dataSource   = self;
-    _tableView.scrollsToTop = YES;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.backgroundColor = [UIColor colorWithHex:0xe6e5e5];
-    
-    [self.view addSubview:_tableView];
- 
-    [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(anchorView.mas_bottom);
-        make.left.equalTo(self.view).with.offset(0.0f);
-        make.bottom.equalTo(self.view).with.offset(-49.0f);
-        make.right.equalTo(self.view).with.offset(0.0f);
-    }];
-    return;
-}
-
-#pragma mark - UITableView Datasource
-
-/**
- *  重新加载数据
- */
 -(void) reloadData {
     
-    NSArray *arData = [SHJL objectForJsonFileName:@"setting_json"];
+    self.keys = @[SH_APP_Set_loc_key,SH_APP_Set_dev_key];
     
-    self.dataSource = [NSMutableArray arrayWithArray:arData];
+    NSDictionary *arData = [SHJL objectForJsonFileName:@"app_setting"];
     
+    self.dataSource = [NSDictionary dictionaryWithDictionary:arData];
     
-    //AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    if (SH_StringIsNULL(COM.mUser.strUserId)) {
-        return;
-    }
-
+    [self.tableView reloadData];
     return;
 }
 
--(void) loadHeadViewData
-{
-    
-}
+#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row==0) {
-        return 200;
-    }
-    
-    return 50;
+    return self.dataSource.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataSource.count;
+    
+    return ((NSArray*)self.dataSource[self.keys[section]]).count;
+    
+}
+
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return self.keys[section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSDictionary *dataInfo = self.dataSource[self.keys[indexPath.section]][indexPath.row];
     
-    NSDictionary *dataInfo = self.dataSource[indexPath.row];
-    
-    static NSString *cellIdentifierT = @"SHSettingTableViewCell"; //Head Cell
-    static NSString *cellIdentifierC = @"SHSettingHeadTableViewCell";
+    static NSString *cellIdentifierH = @"SHUserInfoTableViewCell"; //Head Cell
+    static NSString *cellIdentifierN = @"SHSwitchTableViewCell";
     
     NSString *cellIdentifier = nil;
     
     SHJsonLoadType jlType = [SHJL type:dataInfo];
-    NSInteger tid = [SHJL tid:dataInfo];
-    
-    if(jlType==eJL_text)
-    {
-        cellIdentifier = cellIdentifierT;
+    if (jlType == eJL_switch) {
+        cellIdentifier = cellIdentifierN;
     }
-    else if(jlType==eJL_custom)
+    else if(jlType==eJL_text)
     {
-        cellIdentifier = cellIdentifierC;
+        cellIdentifier = cellIdentifierH;
     }
-    else{
-        cellIdentifier = cellIdentifierT;
+    else
+    {
+        cellIdentifier = cellIdentifierH;
     }
     
     SHSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if(cell == nil) {
         
-         cell = [[[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:nil options:nil] firstObject];
-
-        //分割线
-        UIImageView *separatorLine = [[UIImageView alloc]initWithImage:[PQUtil imageWithUIColor:[UIColor colorWithWhite:0.765 alpha:1.000]]];
-        [cell addSubview:separatorLine];
+        cell = [[[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:nil options:nil] firstObject];
         
-        [separatorLine mas_makeConstraints:^(MASConstraintMaker *make) {
-            
-            make.left.equalTo(cell).with.offset(0.0f);
-            make.right.equalTo(cell).with.offset(0.0f);
-            make.bottom.equalTo(cell).with.offset(0.0f);
-            make.height.mas_equalTo(0.5f);
-            
-        }];
-        
-        if(tid==1)
-        {
-            [cell.ivImageVIew setUserInteractionEnabled:YES];
-            cell.ivImageVIew.layer.cornerRadius = cell.ivImageVIew.frame.size.width/2;
-            cell.ivImageVIew.layer.masksToBounds = YES;
-            
-            UITapGestureRecognizer *gap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goUserInfo)];
-            [cell.ivImageVIew addGestureRecognizer:gap];
-        }
     }
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    NSString *strTitle = [SHJL name:dataInfo];
+    [cell.lbTitle     setText:strTitle];
+    
+    NSInteger tid = [SHJL tid:dataInfo];
     
     
     if (tid==1) {
-        if (!SH_StringIsNULL(COM.mUser.mUserDetail.strNickName)) {
-            [cell.lbTitle     setText:COM.mUser.mUserDetail.strNickName];
-        }
-        else
-        {
-             [cell.lbTitle     setText:COM.mUser.strUserName];
-        }
-        
-        if (!SH_StringIsNULL(COM.mUser.mUserDetail.strCoverPath)) {
-            [cell.ivImageVIew setImageWithURL:[NSURL URLWithString:COM.mUser.mUserDetail.strCoverPath] placeholderImage:[UIImage imageNamed:[SHJL icon:dataInfo]]];
-        }
-        else{
-             [cell.ivImageVIew setImage:[UIImage imageNamed:[SHJL icon:dataInfo]]];
-        }
+        //值设置
+        [cell.swSwitch addTarget:self action:@selector(switchActionForTouch:) forControlEvents:UIControlEventTouchUpInside];
     }
-    else
-    {
-        [cell.lbTitle     setText:[SHJL name:dataInfo]];
-        [cell.ivImageVIew setImage:[UIImage imageNamed:[SHJL icon:dataInfo]]];
+    else if (tid==2){
+        [cell.lbDetail setText:@""];
+    }else if (tid==3){
+        [cell.lbDetail setText:@"中文"];
+    }else if (tid>=4||tid<=6){
+        
+        
+        [cell.swSwitch setTag:tid];
+        [cell.swSwitch addTarget:self action:@selector(switchActionForValueChange:) forControlEvents:UIControlEventValueChanged];
+        
+        if (tid==4) {
+            //设置value
+            
+        } else if(tid==5){
+            //设置value
+        }
+        else if(tid==6){
+            //设置value
+            cell.swSwitch.on = NO;
+        }
+    }else{
+        
+        
     }
     
     return cell;
 }
 
--(UITableViewCell *) loadHeadCell
+-(void)switchActionForTouch:(UISwitch*)sender
 {
-    //cell H: 165
+    NSString *appName = [YZCommon getAPPName];
+    NSString *alertInfo = [NSString stringWithFormat:@"app无法更改消息通知设置,请到IOS系统下 [设置->通知->%@->开启允许通知].",appName];
     
-    
-    return nil;
+    SHAlert(alertInfo);
+    return;
 }
 
-#pragma mark - UITableView Delegate methods
+-(void)switchActionForValueChange:(UISwitch*)sender
+{
+    
+}
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
+/*
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+
+#pragma mark - Table view delegate
+
+// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSDictionary *dataInfo = self.dataSource[indexPath.row];
+    NSDictionary *dataInfo = self.dataSource[self.keys[indexPath.section]][indexPath.row];
     NSInteger tid = [SHJL tid:dataInfo];
-    NSString* strName = [SHJL name:dataInfo];
     
-    //NSInteger section = indexPath.section;
-    //NSInteger index   = indexPath.row;
     
-    if (tid==2) {
-        SLYAppSettingTableViewController *appSet = [[SLYAppSettingTableViewController alloc] init];
-        appSet.title = strName;
-        [self.navigationController pushViewController:appSet animated:YES];
+    if (tid==2) { //本地存储
+
     }
-    else if(tid==3)
+    else if (tid==3)
     {
-        SLYWebViewController *webVC = [[SLYWebViewController alloc] init];
-        webVC.strReqUrl = COM.mUser.mAppConfigInfo.strAppHelpUrl;
-        webVC.title = strName;
-        [self.navigationController pushViewController:webVC animated:YES];
-    }
-    else if (tid==5)
-    {
-        SLYAboutTableViewController *aboutVC = [[SLYAboutTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        aboutVC.title = strName;
-        [self.navigationController pushViewController:aboutVC animated:YES];
+        
+        //        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"中文" otherButtonTitles:nil, nil];
+        //        [sheet showInView:self.view];
+        
+        PQActionSheet *sheet = [[PQActionSheet alloc] initWithTitle:@"语言设置"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:@"中文",nil];
+        [sheet show];
+        
     }
     
     return;
 }
 
-#pragma mark - 功能函数
-
-//!  跳转用户设置界面.如果没登陆，跳登陆窗口
-
--(void) goUserInfo
+#pragma mark -UIActionSheetDelegate
+-(void)actionSheet:(PQActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    SLYUserInfoTableViewController *userVC = [SLYUserInfoTableViewController new];
-    userVC.title = @"个人信息";
-    [self.navigationController pushViewController:userVC animated:YES];
-    return;
+    if (buttonIndex == 0) {//chinese
+        
+    }
 }
 
 @end

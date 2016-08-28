@@ -22,10 +22,14 @@
 
 /* Begin PBXBuildFile section */
 		581230D71C488AC100C578A0 /* YZCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 581230D61C488AC100C578A0 /* YZCommon.m */; };
+		58207C341D71966F0093478A /* home_setting.json in Resources */ = {isa = PBXBuildFile; fileRef = 58207C331D71966F0093478A /* home_setting.json */; };
+		58207C381D7197550093478A /* PQActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 58207C371D7197550093478A /* PQActionSheet.m */; };
+		58207C3A1D719A9B0093478A /* SHHomeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58207C391D719A9B0093478A /* SHHomeTableViewController.xib */; };
+		58207C3E1D71F01F0093478A /* SHItemListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58207C3C1D71F01F0093478A /* SHItemListTableViewController.m */; };
+		58207C3F1D71F01F0093478A /* SHItemListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58207C3D1D71F01F0093478A /* SHItemListTableViewController.xib */; };
 		582F6EB21C4C82DD005CB10C /* SHURLConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 582F6EB11C4C82DD005CB10C /* SHURLConfig.m */; };
 		582F6EB51C4CAF43005CB10C /* SLYBaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 582F6EB41C4CAF43005CB10C /* SLYBaseEntity.m */; };
 		587511C01D70412A0034D583 /* SLYUserInfoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5875118F1D70412A0034D583 /* SLYUserInfoTableViewController.xib */; };
-		587511C11D70412A0034D583 /* SLYUserInfoTableViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = 587511911D70412A0034D583 /* SLYUserInfoTableViewController.strings */; };
 		587511C21D70412A0034D583 /* SLYAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587511941D70412A0034D583 /* SLYAboutTableViewController.m */; };
 		587511C31D70412A0034D583 /* SLYAppSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587511961D70412A0034D583 /* SLYAppSettingTableViewController.m */; };
 		587511C41D70412A0034D583 /* SLYAppSettingTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 587511971D70412A0034D583 /* SLYAppSettingTableViewController.xib */; };
@@ -155,12 +159,18 @@
 /* Begin PBXFileReference section */
 		581230D51C488AC100C578A0 /* YZCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZCommon.h; sourceTree = "<group>"; };
 		581230D61C488AC100C578A0 /* YZCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZCommon.m; sourceTree = "<group>"; };
+		58207C331D71966F0093478A /* home_setting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home_setting.json; sourceTree = "<group>"; };
+		58207C361D7197550093478A /* PQActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQActionSheet.h; sourceTree = "<group>"; };
+		58207C371D7197550093478A /* PQActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQActionSheet.m; sourceTree = "<group>"; };
+		58207C391D719A9B0093478A /* SHHomeTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHHomeTableViewController.xib; sourceTree = "<group>"; };
+		58207C3B1D71F01F0093478A /* SHItemListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHItemListTableViewController.h; sourceTree = "<group>"; };
+		58207C3C1D71F01F0093478A /* SHItemListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHItemListTableViewController.m; sourceTree = "<group>"; };
+		58207C3D1D71F01F0093478A /* SHItemListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHItemListTableViewController.xib; sourceTree = "<group>"; };
 		582F6EB01C4C82DD005CB10C /* SHURLConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHURLConfig.h; sourceTree = "<group>"; };
 		582F6EB11C4C82DD005CB10C /* SHURLConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHURLConfig.m; sourceTree = "<group>"; };
 		582F6EB31C4CAF43005CB10C /* SLYBaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYBaseEntity.h; sourceTree = "<group>"; };
 		582F6EB41C4CAF43005CB10C /* SLYBaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYBaseEntity.m; sourceTree = "<group>"; };
 		587511901D70412A0034D583 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SLYUserInfoTableViewController.xib; sourceTree = "<group>"; };
-		587511921D70412A0034D583 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SLYUserInfoTableViewController.strings; sourceTree = "<group>"; };
 		587511931D70412A0034D583 /* SLYAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYAboutTableViewController.h; sourceTree = "<group>"; };
 		587511941D70412A0034D583 /* SLYAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYAboutTableViewController.m; sourceTree = "<group>"; };
 		587511951D70412A0034D583 /* SLYAppSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYAppSettingTableViewController.h; sourceTree = "<group>"; };
@@ -173,7 +183,6 @@
 		587511A01D70412A0034D583 /* SLYWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYWebViewController.h; sourceTree = "<group>"; };
 		587511A11D70412A0034D583 /* SLYWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYWebViewController.m; sourceTree = "<group>"; };
 		587511A21D70412A0034D583 /* SLYWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLYWebViewController.xib; sourceTree = "<group>"; };
-		587511A31D70412A0034D583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SLYUserInfoTableViewController.strings"; sourceTree = "<group>"; };
 		587511A51D70412A0034D583 /* app_about.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = app_about.json; sourceTree = "<group>"; };
 		587511A61D70412A0034D583 /* app_about_en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = app_about_en.json; sourceTree = "<group>"; };
 		587511A71D70412A0034D583 /* app_device.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = app_device.json; sourceTree = "<group>"; };
@@ -435,6 +444,23 @@
 			path = YZCommon;
 			sourceTree = "<group>";
 		};
+		58207C301D7194570093478A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				58207C331D71966F0093478A /* home_setting.json */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		58207C351D7197550093478A /* PQActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				58207C361D7197550093478A /* PQActionSheet.h */,
+				58207C371D7197550093478A /* PQActionSheet.m */,
+			);
+			path = PQActionSheet;
+			sourceTree = "<group>";
+		};
 		5875118D1D70412A0034D583 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,7 +475,6 @@
 			isa = PBXGroup;
 			children = (
 				5875118F1D70412A0034D583 /* SLYUserInfoTableViewController.xib */,
-				587511911D70412A0034D583 /* SLYUserInfoTableViewController.strings */,
 				587511931D70412A0034D583 /* SLYAboutTableViewController.h */,
 				587511941D70412A0034D583 /* SLYAboutTableViewController.m */,
 				587511951D70412A0034D583 /* SLYAppSettingTableViewController.h */,
@@ -697,6 +722,7 @@
 		58FA62501D6F3DDB009667A6 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				58207C301D7194570093478A /* Model */,
 				58FA62511D6F3DDB009667A6 /* Controller */,
 				58FA62541D6F3DDB009667A6 /* View */,
 			);
@@ -708,6 +734,10 @@
 			children = (
 				58FA626A1D6F3E85009667A6 /* SHHomeTableViewController.h */,
 				58FA626B1D6F3E85009667A6 /* SHHomeTableViewController.m */,
+				58207C391D719A9B0093478A /* SHHomeTableViewController.xib */,
+				58207C3B1D71F01F0093478A /* SHItemListTableViewController.h */,
+				58207C3C1D71F01F0093478A /* SHItemListTableViewController.m */,
+				58207C3D1D71F01F0093478A /* SHItemListTableViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -879,6 +909,7 @@
 		885C9E491C3257CB00351BED /* ThirdPart (三方) */ = {
 			isa = PBXGroup;
 			children = (
+				58207C351D7197550093478A /* PQActionSheet */,
 				58FA61F11D6F267E009667A6 /* Masonry */,
 				58FA61A41D6F24E0009667A6 /* MBProgressHUD */,
 				58FA61A91D6F24E0009667A6 /* MJRefresh */,
@@ -1059,7 +1090,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				587511C41D70412A0034D583 /* SLYAppSettingTableViewController.xib in Resources */,
-				587511C11D70412A0034D583 /* SLYUserInfoTableViewController.strings in Resources */,
 				58FA61D91D6F24E1009667A6 /* LICENSE in Resources */,
 				587511DF1D70412A0034D583 /* SHUserInfoTableViewCell.xib in Resources */,
 				587511D21D70412A0034D583 /* device_setting_en.json in Resources */,
@@ -1070,6 +1100,7 @@
 				587511D91D70412A0034D583 /* SHAboutFootView.strings in Resources */,
 				587511DA1D70412A0034D583 /* SHSettingHeadTableViewCell.xib in Resources */,
 				587511DE1D70412A0034D583 /* SHTextInfoTableViewCell.xib in Resources */,
+				58207C341D71966F0093478A /* home_setting.json in Resources */,
 				587511D71D70412A0034D583 /* user_info_en.json in Resources */,
 				58FA61DC1D6F24E1009667A6 /* LICENSE in Resources */,
 				587511D41D70412A0034D583 /* setting_en.json in Resources */,
@@ -1079,11 +1110,13 @@
 				587511CC1D70412A0034D583 /* app_about_en.json in Resources */,
 				58FA61EB1D6F24E1009667A6 /* MJRefresh.bundle in Resources */,
 				880C851F1C32546C00165087 /* Assets.xcassets in Resources */,
+				58207C3A1D719A9B0093478A /* SHHomeTableViewController.xib in Resources */,
 				587511D01D70412A0034D583 /* app_setting_en.json in Resources */,
 				587511DD1D70412A0034D583 /* SHSwitchTableViewCell.xib in Resources */,
 				587511CF1D70412A0034D583 /* app_setting.json in Resources */,
 				587511CA1D70412A0034D583 /* SLYWebViewController.xib in Resources */,
 				587511CB1D70412A0034D583 /* app_about.json in Resources */,
+				58207C3F1D71F01F0093478A /* SHItemListTableViewController.xib in Resources */,
 				587511D11D70412A0034D583 /* device_setting.json in Resources */,
 				58FA62651D6F3DDB009667A6 /* SHSettingTableViewCell.xib in Resources */,
 			);
@@ -1115,6 +1148,7 @@
 				58FA62121D6F267E009667A6 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				8867FCA41C92C893005F82B6 /* AFNetworkReachabilityManager.m in Sources */,
 				8867FCC21C92C930005F82B6 /* UIButton+AFNetworking.m in Sources */,
+				58207C3E1D71F01F0093478A /* SHItemListTableViewController.m in Sources */,
 				587511C31D70412A0034D583 /* SLYAppSettingTableViewController.m in Sources */,
 				58FA62111D6F267E009667A6 /* NSArray+MASAdditions.m in Sources */,
 				58DB26591C33BA0100CBAD58 /* NSString+Category.m in Sources */,
@@ -1161,6 +1195,7 @@
 				882780C01C327B1500571919 /* SystemInfo.m in Sources */,
 				8867FCA51C92C893005F82B6 /* AFSecurityPolicy.m in Sources */,
 				885C9E511C326A2100351BED /* PQAlertView.m in Sources */,
+				58207C381D7197550093478A /* PQActionSheet.m in Sources */,
 				582F6EB21C4C82DD005CB10C /* SHURLConfig.m in Sources */,
 				587511C91D70412A0034D583 /* SLYWebViewController.m in Sources */,
 				884A1F321C33788D00476D28 /* AppDelegate+PushNotification.m in Sources */,
@@ -1212,15 +1247,6 @@
 				587511901D70412A0034D583 /* Base */,
 			);
 			name = SLYUserInfoTableViewController.xib;
-			sourceTree = "<group>";
-		};
-		587511911D70412A0034D583 /* SLYUserInfoTableViewController.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				587511921D70412A0034D583 /* en */,
-				587511A31D70412A0034D583 /* zh-Hans */,
-			);
-			name = SLYUserInfoTableViewController.strings;
 			sourceTree = "<group>";
 		};
 		587511B41D70412A0034D583 /* SHAboutFootView.xib */ = {
