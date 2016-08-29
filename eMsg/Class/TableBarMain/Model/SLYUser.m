@@ -215,4 +215,34 @@
 {
     return [NSString stringWithFormat:@"<%@: %p> %@  \n 【%@】", [self class], self, [super description], [self userSerializeDictionary]];
 }
+
+
+-(instancetype) initWithIniString:(NSString*) iniString
+{
+    if (iniString==NULL) {
+        // TMBLogError(@"SLYSipInfo -> initWithDictionary:dictInfo 参数为空.");
+        return nil;
+    }
+    
+    self = [super init];
+    
+    //成功返回：token(下面所有方法都要用的令牌)&账户余额&最大登录客户端个数&最多获取号码数&单个客户端最多获取号码数&折扣
+    //SoPzYGIOuZCdxVtKvAiH0Jg7nHGLcV1473&0.800&50&100&30&1&0.000
+    NSArray *values =  [iniString componentsSeparatedByString:@"&"];
+    if (values.count>0) {
+        self.strUserToken = values[0];
+    }
+    
+    self.mUserDetail= [[SLYUserDetail alloc] init];
+    if (values.count>1) {
+        self.mUserDetail.strMoney = values[1];
+    }
+    
+    if (values.count>6) {
+        self.mUserDetail.strDiscount = values[6];
+    }
+    
+    return self;
+}
+
 @end

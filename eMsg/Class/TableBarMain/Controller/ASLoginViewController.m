@@ -196,7 +196,7 @@
     [self saveAccountToCoreData];
     
     if([@"" isEqualToString:_userNameField.text]
-       || [@"" isEqualToString:_userNameField.text]){
+       || [@"" isEqualToString:_pwdField.text]){
         
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示"
                                                            message:@"请输入用户名和密码!"
@@ -212,48 +212,34 @@
     [self showHudInView:self.view hint:@"正在登陆..."];
     
     
-    
-    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
-    [params addEntriesFromDictionary:[UC getBaseParams]];
-    
-    [params setValue:@"login" forKey:@"method"];
-    [params setValue:_userNameField.text forKey:@"username"];
-    [params setValue:_pwdField.text forKey:@"password"];
-    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    //设置为10秒超时
-    manager.requestSerializer.timeoutInterval = 10.0f;
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    //manager.requestSerializer.acceptableContentTypes =
+    //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    //manager.requestSerializer.timeoutInterval = 10.0f;
     
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
-    [manager GET:[UC getHost]
-      parameters:params
+    [manager GET:[UC getLoginForUsr:_userNameField.text P:_pwdField.text]
+      parameters:nil
         progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-             
-             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-             
-             NSDictionary *responseData = responseObject;
+         success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable responseObject) {
              
              [self hideHud];
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
              
-             // 请求成功
-             if([COM isOK:responseData]==0) {
+             
+             if (responseObject == NULL || responseObject.length<1) {
+                 SHAlert(@"数据异常,请您重新登陆.");
+             }
+             else{
                  
-                 COM.mUser = [[SLYUser alloc] initWithDictionary:responseData];
-                 COM.mUser.strUserName = _userNameField.text;
-                 COM.mUser.strUserPwd  = _pwdField.text;
+                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:4];
                  
+                 COM.mUser.strName =_userNameField.text;
+                 COM.mUser.strUserPwd=_pwdField.text;
                  
-                 //登陆成功，发送消息通知.
-                 [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@YES];
-                 
-                 
-             }else {
-                 
-                 SHAlert([responseData valueForKey:@"msg"]);
+                 COM.mUser = [[SLYUser alloc] initWithIniString:respStr];
                  
              }
              
@@ -266,7 +252,6 @@
              [self hideHud];
              
              SHAlert(@"服务器请求失败,请检测您的网络.");
-             
              
          }
      
