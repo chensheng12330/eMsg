@@ -10,6 +10,8 @@
 
 #define UC [SHURLConfig sharedInstance]
 
+#define DEVLP_KEY  (@"nl%2b%2bva55Az%2bstOKhuti4Hg%3d%3d")
+
 //! 静态配置服务端接口
 @interface SHURLConfig : NSObject
 @property (nonatomic, strong) NSString *v; //接口版本
@@ -66,4 +68,7 @@
 
 
 -(NSDictionary *)getBaseParams;
+
+-(NSString*) getLoginForUsr:(NSString *)uName P:(NSString *)pWd;
+
 @end

@@ -28,6 +28,13 @@
 @property (nonatomic, copy) NSString *strCoverPath;
 //! 用户个人签名&描述
 @property (nonatomic, copy) NSString *strDescribe;
+
+//! 账户余额
+@property (nonatomic, copy) NSString *strMoney;
+
+//! 折扣
+@property (nonatomic, copy) NSString *strDiscount;
+
 @end
 
 //!app配置信息类
@@ -88,6 +95,7 @@
 @property (nonatomic,strong) SLYAppUpdateInfo *mAppUpdateInfo;
 
 
+-(instancetype) initWithIniString:(NSString*) iniString;
 @end
 
 
