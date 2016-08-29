@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSArray *keys;
 
 @property (nonatomic,strong) NSArray *arSP;// 运营商列表
+@property (nonatomic, assign) NSInteger nSpSel;
 @end
 
 @implementation SHHomeTableViewController
@@ -26,13 +27,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.arSP = @[@"[所有]",@"[移动]",@"[联通]",@"[电信]"];
+    self.arSP = @[@"[全部]",@"[移动]",@"[联通]",@"[电信]"];
+    self.nSpSel = 0;
+    
+    
     self.clearsSelectionOnViewWillAppear = NO;
+    //[self setHidesBottomBarWhenPushed:YES];
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
+    //self.tabBarController.tabBar.hidden = NO;
+    //[self setHidesBottomBarWhenPushed:YES];
     [self reloadData];
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    //[super viewWillDisappear:animated];
+    //self.tabBarController.tabBar.hidden = YES;
 }
 
 -(void) reloadData {
@@ -104,6 +119,7 @@
     
     if (tid==1) {
         //值设置
+        [cell.lbDetail  setText:self.arSP[self.nSpSel]];
     }
     else if (tid==2){
         [cell.lbDetail setText:@""];
@@ -205,6 +221,7 @@
     }
     else if (tid==2) {
         SHItemListTableViewController *itemListVC = [[SHItemListTableViewController alloc]init];
+        itemListVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:itemListVC animated:YES];
     }
     else if (tid==3)

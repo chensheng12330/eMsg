@@ -79,7 +79,7 @@
     self.baseURL = url;
 
     self.requestSerializer = [AFHTTPRequestSerializer serializer];
-    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    self.responseSerializer = [AFHTTPResponseSerializer serializer];
 
     return self;
 }

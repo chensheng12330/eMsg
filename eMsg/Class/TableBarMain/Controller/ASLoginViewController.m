@@ -217,8 +217,8 @@
     //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     //manager.requestSerializer.timeoutInterval = 10.0f;
     
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
     [manager GET:[UC getLoginForUsr:_userNameField.text P:_pwdField.text]
       parameters:nil
@@ -236,11 +236,9 @@
                  
                  NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:4];
                  
+                 COM.mUser = [[SLYUser alloc] initWithIniString:respStr];
                  COM.mUser.strName =_userNameField.text;
                  COM.mUser.strUserPwd=_pwdField.text;
-                 
-                 COM.mUser = [[SLYUser alloc] initWithIniString:respStr];
-                 
              }
              
          }

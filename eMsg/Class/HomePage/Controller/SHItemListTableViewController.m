@@ -10,6 +10,7 @@
 
 @interface SHItemListTableViewController ()
 
+@property (strong, nonatomic) NSArray *dataSource;
 @end
 
 @implementation SHItemListTableViewController
@@ -29,22 +30,29 @@
 -(void) reloadData
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    //manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    //设置为10秒超时
+
     manager.requestSerializer.timeoutInterval = 15.0f;
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    
-    
+
     [manager GET:[UC getArea]
       parameters:nil
         progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable responseObject) {
              
              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
              
-             NSDictionary *responseData = responseObject;
+             if (responseObject==NULL || responseObject.length<1) {
+                 
+             }
+             else
+             {
+                 NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+                 
+                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:enc];
+                 self.dataSource =  [respStr componentsSeparatedByString:@"\n"];
+                 [self.tableView reloadData];
+             }
              
+
              [self hideHud];
              
          }
@@ -63,32 +71,29 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return self.dataSource.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier"];
+    
+    if (cell==NULL) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuseIdentifier"];
+    }
     
     // Configure the cell...
-    
+    [cell.textLabel setText:self.dataSource[indexPath.row]];
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -124,21 +129,21 @@
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+
     
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    //[self.navigationController pushViewController:detailViewController animated:YES];
 }
-*/
+
 
 /*
 #pragma mark - Navigation

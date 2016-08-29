@@ -91,6 +91,7 @@
         
         UINavigationController  *navC = [[UINavigationController alloc]initWithRootViewController:obj];
         navC.navigationBar.translucent = YES;
+
         [self.subVCS addObject:navC];
     }
     
