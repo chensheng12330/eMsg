@@ -62,6 +62,7 @@
     _searchController.hidesNavigationBarDuringPresentation = NO;
     _searchController.searchBar.frame = CGRectMake(self.searchController.searchBar.frame.origin.x, self.searchController.searchBar.frame.origin.y, self.searchController.searchBar.frame.size.width, 44.0);
     self.searchController.searchBar.placeholder = @"搜索";
+    self.searchController.searchBar.delegate    = self;
     self.tableView.tableHeaderView = self.searchController.searchBar;
     
     /*
@@ -191,12 +192,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (self.tableView == tableView) {
-        return self.dataSource.count;
+    if (self.searchController.isActive) {
+        return self.filterData.count;
     }
     else
     {
-        return self.filterData.count;
+        return self.dataSource.count;
     }
     
     return 0;
@@ -213,11 +214,11 @@
     }
     
     NSArray *selData = nil;
-    if (self.tableView == tableView) {
-        selData = self.dataSource;
+    if (self.searchController.isActive) {
+        selData = self.filterData;
     }
     else{
-        selData = self.filterData;
+        selData = self.dataSource;
     }
     
     
@@ -298,10 +299,14 @@
 //http://blog.csdn.net/lmf208/article/details/38345321
 //http://www.cnblogs.com/lesliefang/p/3929677.html
 //http://www.tuicool.com/articles/6viqEn
+//http://supershll.blog.163.com/blog/static/370704362012116946365/
 -(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     NSString *searchString = [self.searchController.searchBar text];
     
-    NSPredicate *preicate = [NSPredicate predicateWithFormat:@"%@ MATCHES %@",IL_ItemName,searchString];
+    if (searchString.length<1) {  return ;}
+    //searchString = @"美";
+    
+    NSPredicate *preicate = [NSPredicate predicateWithFormat:@"SELF.%@ CONTAINS %@",IL_ItemName,searchString];
     //NSPredicate *preicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@", searchString];
 
     //过滤数据
@@ -317,7 +322,7 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    
+    [self.tableView reloadData];
 }
 
 @end

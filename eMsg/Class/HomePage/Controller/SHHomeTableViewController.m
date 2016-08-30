@@ -20,6 +20,10 @@
 
 @property (nonatomic,strong) NSArray *arSP;// 运营商列表
 @property (nonatomic, assign) NSInteger nSpSel;
+
+@property (nonatomic, strong) NSString *strArea; //地区
+
+@property (nonatomic, strong) NSDictionary *dtPlatform;
 @end
 
 @implementation SHHomeTableViewController
@@ -30,6 +34,8 @@
     self.arSP = @[@"[全部]",@"[移动]",@"[联通]",@"[电信]"];
     self.nSpSel = 0;
     
+    self.strArea = @"全国";
+    self.dtPlatform = nil;
     
     self.clearsSelectionOnViewWillAppear = NO;
     //[self setHidesBottomBarWhenPushed:YES];
@@ -122,9 +128,15 @@
         [cell.lbDetail  setText:self.arSP[self.nSpSel]];
     }
     else if (tid==2){
-        [cell.lbDetail setText:@""];
+        [cell.lbDetail setText:self.strArea];
     }else if (tid==3){
-        [cell.lbDetail setText:@"中文"];
+        if (self.dtPlatform) {
+            [cell.lbDetail setText:self.dtPlatform[IL_ItemName]];
+        }
+        else{
+            [cell.lbDetail setText:@"未选"];
+        }
+        
     }else if (tid>=4||tid<=6){
        
         
