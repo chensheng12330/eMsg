@@ -8,9 +8,14 @@
 
 #import "SHItemListTableViewController.h"
 
-@interface SHItemListTableViewController ()
+@interface SHItemListTableViewController ()<UISearchBarDelegate,UISearchResultsUpdating>
 
 @property (strong, nonatomic) NSArray *dataSource;
+
+
+//@property (strong, nonatomic) UISearchDisplayController *searchDisplayController;
+@property (nonatomic, strong) UISearchController *searchController;
+@property (strong, nonatomic) NSArray *filterData;
 @end
 
 @implementation SHItemListTableViewController
@@ -23,14 +28,68 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self createRefreshControl];
+    [self createSearchBar];
     
-    [self reloadData];
+    [self refreshAction];
 }
 
--(void) reloadData
-{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+#pragma mark - SH 视图创建
 
+-(void)createRefreshControl
+{
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"正在刷新…"];
+    self.refreshControl.tintColor = [UIColor grayColor];
+    [self.refreshControl addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventValueChanged];
+}
+
+-(void)refreshAction
+{
+    if (_dataType == IL_Type_Area) {
+        [self getAreaDataSource];
+    }
+    else if (_dataType == IL_Type_Items){
+        [self getItemsDataSource];
+    }
+}
+
+-(void)createSearchBar
+{
+    _searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    _searchController.searchResultsUpdater = self;
+    _searchController.dimsBackgroundDuringPresentation = NO;
+    _searchController.hidesNavigationBarDuringPresentation = NO;
+    _searchController.searchBar.frame = CGRectMake(self.searchController.searchBar.frame.origin.x, self.searchController.searchBar.frame.origin.y, self.searchController.searchBar.frame.size.width, 44.0);
+    self.searchController.searchBar.placeholder = @"搜索";
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    
+    /*
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width
+                                                                           , 44)];
+    searchBar.placeholder = @"搜索";
+    self.tableView.tableHeaderView = searchBar;
+    //self.searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+    //self.searchDisplayController.searchResultsDataSource = self;
+    //self.searchDisplayController.searchResultsDelegate = self;
+     */
+    return ;
+}
+
+-(void)stopHUB
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [self hideHud];
+    [self.refreshControl endRefreshing];
+}
+
+#pragma mark - SH 网络请求
+
+-(void) getAreaDataSource
+{
+    [self showHudInView:self.view hint:@"正在加载数据..."];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer.timeoutInterval = 15.0f;
 
     [manager GET:[UC getArea]
@@ -38,7 +97,7 @@
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable responseObject) {
              
-             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+             [self stopHUB];
              
              if (responseObject==NULL || responseObject.length<1) {
                  
@@ -52,23 +111,76 @@
                  [self.tableView reloadData];
              }
              
-
-             [self hideHud];
-             
          }
      
          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              
-             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-             
-             [self hideHud];
+             [self stopHUB];
              
              SHAlert(@"服务器请求失败,请检测您的网络.");
              
          }
      
      ];
+}
+
+
+
+-(void) getItemsDataSource
+{
+    [self showHudInView:self.view hint:@"正在加载数据..."];
     
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = 15.0f;
+    
+    [manager GET:[UC getPlatformItemsForUTok:COM.mUser.strUserToken]
+      parameters:nil
+        progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable responseObject) {
+             
+             [self stopHUB];
+             
+             if (responseObject==NULL || responseObject.length<1) {
+                 
+             }
+             else
+             {
+                 //项目ID&项目名称&项目价格&项目类型\n
+                 NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+                 
+                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:enc];
+                 NSArray *itemInfoList =  [respStr componentsSeparatedByString:@"\n"];
+                 
+                 NSMutableArray *addSource = [NSMutableArray new];
+                 for (NSString *itemInfo in itemInfoList) {
+                     
+                     NSArray *itemInfoList =  [itemInfo componentsSeparatedByString:@"&"];
+                     if (itemInfoList.count >3) {
+                         NSMutableDictionary *itemInfo = [NSMutableDictionary new];
+                         [itemInfo setObject:itemInfoList[0] forKey:IL_ItemID];
+                         [itemInfo setObject:itemInfoList[1] forKey:IL_ItemName];
+                         [itemInfo setObject:itemInfoList[2] forKey:IL_ItemPrice];
+                         [itemInfo setObject:itemInfoList[3] forKey:IL_ItemType];
+                         [addSource addObject:itemInfo];
+                     }
+                 }
+                 
+                 self.dataSource = addSource;
+                 
+                 [self.tableView reloadData];
+             }
+             
+         }
+     
+         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             
+             [self stopHUB];
+             
+             SHAlert(@"服务器请求失败,请检测您的网络.");
+             
+         }
+     
+     ];
 }
 
 #pragma mark - Table view data source
@@ -78,19 +190,48 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataSource.count;
+    
+    if (self.tableView == tableView) {
+        return self.dataSource.count;
+    }
+    else
+    {
+        return self.filterData.count;
+    }
+    
+    return 0;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier"];
     
     if (cell==NULL) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuseIdentifier"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"reuseIdentifier"];
+    }
+    
+    NSArray *selData = nil;
+    if (self.tableView == tableView) {
+        selData = self.dataSource;
+    }
+    else{
+        selData = self.filterData;
+    }
+    
+    
+    if (_dataType == IL_Type_Area) {
+        [cell.textLabel setText:selData[indexPath.row]];
+    }
+    else if (_dataType == IL_Type_Items){
+        NSDictionary *itemInfo = selData[indexPath.row];
+        [cell.textLabel setText:itemInfo[IL_ItemName]];
+        [cell.detailTextLabel setText:[NSString stringWithFormat:@"价格:%@",itemInfo[IL_ItemPrice]]];
     }
     
     // Configure the cell...
-    [cell.textLabel setText:self.dataSource[indexPath.row]];
+    
     return cell;
 }
 
@@ -154,5 +295,29 @@
     // Pass the selected object to the new view controller.
 }
 */
+//http://blog.csdn.net/lmf208/article/details/38345321
+//http://www.cnblogs.com/lesliefang/p/3929677.html
+//http://www.tuicool.com/articles/6viqEn
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSString *searchString = [self.searchController.searchBar text];
+    
+    NSPredicate *preicate = [NSPredicate predicateWithFormat:@"%@ MATCHES %@",IL_ItemName,searchString];
+    //NSPredicate *preicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@", searchString];
+
+    //过滤数据
+    self.filterData = [NSMutableArray arrayWithArray:[self.dataSource filteredArrayUsingPredicate:preicate]];
+    //刷新表格
+    [self.tableView reloadData];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    
+}
 
 @end

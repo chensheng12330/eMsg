@@ -239,6 +239,9 @@
                  COM.mUser = [[SLYUser alloc] initWithIniString:respStr];
                  COM.mUser.strName =_userNameField.text;
                  COM.mUser.strUserPwd=_pwdField.text;
+                 
+                 //登陆成功，发送消息通知.
+                 [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@YES];
              }
              
          }

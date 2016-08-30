@@ -74,6 +74,18 @@ static SHURLConfig *_sharedURLConfig= nil;
     return [NSString stringWithFormat:@"%@/Api/userGetArea",[self getHost]];
 }
 
+-(NSString*) getLoginForUsr:(NSString *)uName P:(NSString *)pWd
+{
+    return [NSString stringWithFormat:@"%@/Api/userLogin?uName=%@&pWord=%@&Developer=%@",[self getHost],uName,pWd,DEVLP_KEY];
+}
+
+-(NSString*) getPlatformItemsForUTok:(NSString*) userToken
+{
+    return [NSString stringWithFormat:@"%@/Api/userGetItems?token=%@&tp=ut",[self getHost],userToken];
+}
+
+
+
 
 -(NSString*) getLoginForU:(NSString*)uName P:(NSString*) pWd
 {
@@ -186,8 +198,4 @@ static SHURLConfig *_sharedURLConfig= nil;
     return [NSString stringWithFormat:@"%@&method=get_app_config&userid=%@&usertoken=%@",self.basePath,uid,userToken];
 }
 
--(NSString*) getLoginForUsr:(NSString *)uName P:(NSString *)pWd
-{
-    return [NSString stringWithFormat:@"http://api.ema6.com:20161/Api/userLogin?uName=%@&pWord=%@&Developer=%@",uName,pWd,DEVLP_KEY];
-}
 @end

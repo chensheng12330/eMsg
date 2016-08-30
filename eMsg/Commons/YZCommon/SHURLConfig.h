@@ -23,8 +23,12 @@
 
 -(NSString*) getArea;
 
+-(NSString*) getLoginForUsr:(NSString *)uName P:(NSString *)pWd;
+
+-(NSString*) getPlatformItemsForUTok:(NSString*) userToken;
+
 //! 登陆接口
--(NSString*) getLoginForU:(NSString*)uName P:(NSString*) pWd;
+//-(NSString*) getLoginForU:(NSString*)uName P:(NSString*) pWd;
 
 //! 注册接口
 -(NSString*) getRegisterForU:(NSString*)uName
@@ -71,6 +75,6 @@
 
 -(NSDictionary *)getBaseParams;
 
--(NSString*) getLoginForUsr:(NSString *)uName P:(NSString *)pWd;
+
 
 @end

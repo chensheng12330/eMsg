@@ -122,7 +122,7 @@
     
     //BOOL isAutoLogin = YES;
     
-    if (loginSuccess || 1) {//登陆成功加载主窗口控制器SW
+    if (loginSuccess) {//登陆成功加载主窗口控制器SW
         
         if (self.mainController == nil) {
             self.mainController = [[ASMainViewController alloc] init];

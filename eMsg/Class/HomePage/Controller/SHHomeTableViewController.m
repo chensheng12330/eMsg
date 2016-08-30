@@ -222,19 +222,15 @@
     else if (tid==2) {
         SHItemListTableViewController *itemListVC = [[SHItemListTableViewController alloc]init];
         itemListVC.hidesBottomBarWhenPushed = YES;
+        itemListVC.dataType = IL_Type_Area;
         [self.navigationController pushViewController:itemListVC animated:YES];
     }
     else if (tid==3)
     {
-        
-//        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"中文" otherButtonTitles:nil, nil];
-//        [sheet showInView:self.view];
-        
-        PQActionSheet *sheet = [[PQActionSheet alloc] initWithTitle:@"语言设置"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"取消"
-                                                  otherButtonTitles:@"中文",nil];
-        [sheet show];
+        SHItemListTableViewController *itemListVC = [[SHItemListTableViewController alloc]init];
+        itemListVC.hidesBottomBarWhenPushed = YES;
+        itemListVC.dataType = IL_Type_Items;
+        [self.navigationController pushViewController:itemListVC animated:YES];
         
     }
     
