@@ -14,7 +14,7 @@
 #import "PQActionSheet.h"
 #import "SHItemListTableViewController.h"
 
-@interface SHHomeTableViewController ()<PQActionSheetDelegate>
+@interface SHHomeTableViewController ()<PQActionSheetDelegate,ItemListDelegate>
 @property (strong, nonatomic) NSDictionary *dataSource;
 @property (nonatomic, strong) NSArray *keys;
 
@@ -242,6 +242,7 @@
         SHItemListTableViewController *itemListVC = [[SHItemListTableViewController alloc]init];
         itemListVC.hidesBottomBarWhenPushed = YES;
         itemListVC.dataType = IL_Type_Items;
+        itemListVC.delegate = self;
         [self.navigationController pushViewController:itemListVC animated:YES];
         
     }
@@ -253,6 +254,11 @@
 clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"PQASheet: %ld Index:%ld", actionSheet.tag, buttonIndex);
+}
+
+-(void) didSelectItemListWithData:(NSObject*) data requestDataType:(RequestDataType) reqType
+{
+    NSLog(@"%@",data);
 }
 
 @end

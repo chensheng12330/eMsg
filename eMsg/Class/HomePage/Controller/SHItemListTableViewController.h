@@ -18,8 +18,14 @@ typedef NS_ENUM(NSUInteger, RequestDataType) {
     IL_Type_Items,
 };
 
+@protocol ItemListDelegate <NSObject>
+
+-(void) didSelectItemListWithData:(NSObject*) data requestDataType:(RequestDataType) reqType;
+
+@end
 
 @interface SHItemListTableViewController : UITableViewController
 
+@property (nonatomic, weak) id<ItemListDelegate> delegate;
 @property (nonatomic, assign) RequestDataType dataType;
 @end

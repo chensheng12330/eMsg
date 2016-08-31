@@ -35,6 +35,10 @@
     [self refreshAction];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
 #pragma mark - SH 视图创建
 
 -(void)createRefreshControl
@@ -42,7 +46,7 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"正在刷新…"];
     self.refreshControl.tintColor = [UIColor grayColor];
-    [self.refreshControl addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventValueChanged];
+    //[self.refreshControl addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventValueChanged];
     [self.refreshControl endRefreshing];
 }
 
@@ -281,6 +285,29 @@
     // Navigation logic may go here, for example:
     // Create the next view controller.
 
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectItemListWithData:requestDataType:)]) {
+        
+        NSArray *objAr = nil;
+        if (self.searchController.isActive) {
+            objAr = self.filterData;
+        }
+        else{
+            objAr = self.dataSource;
+        }
+        
+        NSObject *objData = nil;
+        if (_dataType == IL_Type_Area) {
+            objData = objAr[indexPath.row];
+           
+        }
+        else if (_dataType == IL_Type_Items){
+            objData = objAr[indexPath.row];
+        }
+        
+        [self.delegate didSelectItemListWithData:nil requestDataType:self.dataType];
+    }
     
     // Pass the selected object to the new view controller.
     
