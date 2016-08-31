@@ -24,8 +24,9 @@
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
+     self.clearsSelectionOnViewWillAppear = NO;
+     //self.automaticallyAdjustsScrollViewInsets=NO;
+
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self createRefreshControl];
@@ -42,6 +43,7 @@
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"正在刷新…"];
     self.refreshControl.tintColor = [UIColor grayColor];
     [self.refreshControl addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl endRefreshing];
 }
 
 -(void)refreshAction
