@@ -8,6 +8,7 @@
 
 #define SH_APP_Set_loc_key (@"小号属性")
 #define SH_APP_Set_dev_key (@"小号列表")
+#define SH_APP_Set_sev_key (@"小号服务")
 
 #import "SHHomeTableViewController.h"
 #import "SHSettingTableViewCell.h"
@@ -58,7 +59,7 @@
 
 -(void) reloadData {
     
-    self.keys = @[SH_APP_Set_loc_key,SH_APP_Set_dev_key];
+    self.keys = @[SH_APP_Set_loc_key,SH_APP_Set_sev_key,SH_APP_Set_dev_key];
     
     NSDictionary *arData = [SHJL objectForJsonFileName:@"home_setting"];
     
@@ -97,6 +98,17 @@
     
     
     SHJsonLoadType jlType = [SHJL type:dataInfo];
+    NSInteger tid = [SHJL tid:dataInfo];
+    
+    if (tid == 4) {
+        return  self.myCell1;
+    }
+    else if(tid ==5)
+    {
+        return _myCell2;
+    }
+    
+    
     if (jlType == eJL_switch) {
         cellIdentifier = cellIdentifierN;
     }
@@ -120,7 +132,7 @@
     NSString *strTitle = [SHJL name:dataInfo];
     [cell.lbTitle     setText:strTitle];
     
-    NSInteger tid = [SHJL tid:dataInfo];
+    
     
     
     if (tid==1) {
@@ -253,12 +265,31 @@
 - (void)actionSheet:(PQActionSheet *)actionSheet
 clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    if(buttonIndex>self.arSP.count) { return; }
+    
+    self.nSpSel = buttonIndex;
+    
+    SHSettingTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [cell.lbDetail setText:self.arSP[buttonIndex]];
+    
     NSLog(@"PQASheet: %ld Index:%ld", actionSheet.tag, buttonIndex);
 }
 
 -(void) didSelectItemListWithData:(NSObject*) data requestDataType:(RequestDataType) reqType
 {
-    NSLog(@"%@",data);
+    //NSLog(@"%@",data);
+    if (reqType == IL_Type_Area) {
+        SHSettingTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+        
+        self.strArea = (NSString *)data;
+        [cell.lbDetail setText:self.strArea];
+    }
+    else if (reqType == IL_Type_Items){
+        
+        SHSettingTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+        self.dtPlatform = (NSDictionary*)data;
+        [cell.lbDetail setText:self.dtPlatform[IL_ItemName]];
+    }
 }
 
 @end

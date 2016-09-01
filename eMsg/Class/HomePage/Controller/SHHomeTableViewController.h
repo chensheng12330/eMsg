@@ -11,4 +11,7 @@
 //! 主页
 @interface SHHomeTableViewController : UITableViewController
 
+@property (strong, nonatomic) IBOutlet UITableViewCell *myCell1;
+@property (strong, nonatomic) IBOutlet UITableViewCell *myCell2;
+
 @end

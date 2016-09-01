@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHHomeTableViewController">
             <connections>
+                <outlet property="myCell1" destination="1eN-Ig-goD" id="EbS-Rs-cot"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,5 +22,55 @@
             </connections>
             <point key="canvasLocation" x="376" y="222"/>
         </tableView>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1eN-Ig-goD">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1eN-Ig-goD" id="byr-Aa-Eib">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pl7-GV-nB7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                        <color key="backgroundColor" red="0.89325573979999995" green="0.89325573979999995" blue="0.89325573979999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" title="获取小号(20分钟失效)">
+                            <color key="titleColor" red="0.56078433989999998" green="0.55686277149999996" blue="0.56078433989999998" alpha="1" colorSpace="deviceRGB"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Pl7-GV-nB7" secondAttribute="bottom" id="1x1-7O-pbg"/>
+                    <constraint firstItem="Pl7-GV-nB7" firstAttribute="leading" secondItem="byr-Aa-Eib" secondAttribute="leading" id="BWl-ns-XbO"/>
+                    <constraint firstItem="Pl7-GV-nB7" firstAttribute="top" secondItem="byr-Aa-Eib" secondAttribute="top" id="nbK-a6-htY"/>
+                    <constraint firstAttribute="trailing" secondItem="Pl7-GV-nB7" secondAttribute="trailing" id="otN-3T-zgA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="149" y="358"/>
+        </tableViewCell>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3n1-l9-Nhc">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3n1-l9-Nhc" id="aMs-JR-hng">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iiT-Xh-c1w">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                        <color key="backgroundColor" red="0.86274509799999999" green="0.28627450980000002" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" title="退出登陆">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="iiT-Xh-c1w" firstAttribute="leading" secondItem="aMs-JR-hng" secondAttribute="leading" id="6wB-ea-ZuG"/>
+                    <constraint firstItem="iiT-Xh-c1w" firstAttribute="top" secondItem="aMs-JR-hng" secondAttribute="top" id="81B-Ci-3IQ"/>
+                    <constraint firstAttribute="bottom" secondItem="iiT-Xh-c1w" secondAttribute="bottom" id="tMX-Bj-nGt"/>
+                    <constraint firstAttribute="trailing" secondItem="iiT-Xh-c1w" secondAttribute="trailing" id="zKa-UN-8Iu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="208" y="566"/>
+        </tableViewCell>
     </objects>
 </document>

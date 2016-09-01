@@ -6,6 +6,7 @@
 //  Copyright © 2016年 深蓝蕴. All rights reserved.
 //
 
+#import "MJRefresh.h"
 #import "SHItemListTableViewController.h"
 
 @interface SHItemListTableViewController ()<UISearchBarDelegate,UISearchResultsUpdating>
@@ -43,11 +44,20 @@
 
 -(void)createRefreshControl
 {
+    __typeof(self) weakSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        ////[weakSelf requestNetworkData];
+        [self refreshAction];
+    }];
+    
+    return;
+    /*
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"正在刷新…"];
     self.refreshControl.tintColor = [UIColor grayColor];
     //[self.refreshControl addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventValueChanged];
     [self.refreshControl endRefreshing];
+     */
 }
 
 -(void)refreshAction
@@ -87,7 +97,8 @@
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [self hideHud];
-    [self.refreshControl endRefreshing];
+    //[self.refreshControl endRefreshing];
+    [self.tableView.mj_header endRefreshing];
 }
 
 #pragma mark - SH 网络请求
@@ -306,7 +317,7 @@
             objData = objAr[indexPath.row];
         }
         
-        [self.delegate didSelectItemListWithData:nil requestDataType:self.dataType];
+        [self.delegate didSelectItemListWithData:objData requestDataType:self.dataType];
     }
     
     // Pass the selected object to the new view controller.
@@ -346,11 +357,14 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    
+    self.filterData = self.dataSource;
+    [self.tableView reloadData];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
+    [self.searchController setActive:NO];
+    self.filterData = self.dataSource;
     [self.tableView reloadData];
 }
 
