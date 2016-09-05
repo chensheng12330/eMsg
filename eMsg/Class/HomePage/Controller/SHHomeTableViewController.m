@@ -6,6 +6,13 @@
 //  Copyright © 2016年 深蓝蕴. All rights reserved.
 //
 
+//@{@"PhoneNum":@"13112345678",@"time":@"2015-08-26 15:36:33",@"itemName":@"嗒嗒巴士"}
+
+#define SHModel_PHONE_PhoneNum   (@"PhoneNum")
+#define SHModel_PHONE_CreateTime (@"CreateTime")
+#define SHModel_PHONE_ItemName   (@"ItemName")
+//#define SHModel_PHONE_
+
 #define SH_APP_Set_loc_key (@"小号属性")
 #define SH_APP_Set_dev_key (@"小号列表")
 #define SH_APP_Set_sev_key (@"小号服务")
@@ -25,9 +32,29 @@
 @property (nonatomic, strong) NSString *strArea; //地区
 
 @property (nonatomic, strong) NSDictionary *dtPlatform;
+
+@property (nonatomic, strong) NSMutableArray *arPhoneNumList;
 @end
 
 @implementation SHHomeTableViewController
+
+-(void) loadPhoneNumListFromFile
+{
+    NSString *fileP = [NSString stringWithFormat:@"%@/%@_phone_num_list",SH_LibraryDir,COM.mUser.strUserName];
+    
+    self.arPhoneNumList = [[NSMutableArray alloc] initWithContentsOfFile:fileP];
+}
+
+-(void) savePhoneNumListToFile
+{
+    if (self.arPhoneNumList==NULL) {
+        return;
+    }
+    
+    NSString *fileP = [NSString stringWithFormat:@"%@/%@_phone_num_list",SH_LibraryDir,COM.mUser.strUserName];
+    [self.arPhoneNumList writeToFile:fileP atomically:YES];
+    return;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,6 +67,8 @@
     
     self.clearsSelectionOnViewWillAppear = NO;
     //[self setHidesBottomBarWhenPushed:YES];
+    
+    [self loadPhoneNumListFromFile];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -78,6 +107,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
+    if (section == (self.keys.count-1)) {
+        return self.arPhoneNumList.count;
+    }
+    
     return ((NSArray*)self.dataSource[self.keys[section]]).count;
     
 }
@@ -88,6 +121,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == (self.keys.count-1)) {
+        static NSString *phoneCellIdentifier=@"SHTextInfoTableViewCell";
+        SHSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:phoneCellIdentifier];
+        
+        if(cell == nil) {
+            
+            cell = [[[NSBundle mainBundle] loadNibNamed:phoneCellIdentifier owner:nil options:nil] firstObject];
+            
+        }
+        
+        NSDictionary *phoneInfo = self.arPhoneNumList[indexPath.row];
+        
+        [cell.lbTitle     setText:phoneInfo[@""]];
+        
+        return cell;
+    }
+    
     
     NSDictionary *dataInfo = self.dataSource[self.keys[indexPath.section]][indexPath.row];
     
@@ -352,7 +403,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
              [self hideHud];
              
              SHAlert(@"服务器请求失败,请检测您的网络.");
-             
          }
      
      ];
