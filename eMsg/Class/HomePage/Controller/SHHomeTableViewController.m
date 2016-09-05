@@ -292,4 +292,70 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     }
 }
 
+- (IBAction)actionGetPhoneNum:(UIButton *)sender {
+ 
+    if (self.dtPlatform == NULL) {
+        SHAlert(@"请选择需要注册的平台.");
+        return;
+    }
+    
+    [self getPhoneNum];
+    
+    return;
+}
+
+
+-(void) getPhoneNum
+{
+    
+    [self showHudInView:self.view hint:@"正在获取电话号码..."];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = 15.0f;
+    
+    [manager GET:[UC getPhoneNumForToken:COM.mUser.strUserToken itemID:self.dtPlatform[@"IL_ItemID"] phoneType:self.nSpSel]
+      parameters:nil
+        progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable responseObject) {
+             
+             [self  hideHud];
+             
+             if (responseObject==NULL || responseObject.length<1) {
+                 
+             }
+             else
+             {
+                 NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+                 
+                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:enc];
+                 
+                 //错误处理
+                 //False:Session 过期
+                 
+                 if ([[respStr substringToIndex:4] isEqualToString:@"False"]) {
+                     
+                 }
+                 else{
+                     
+                 }
+                 
+                 NSArray *arPhoneList =  [respStr componentsSeparatedByString:@";"];
+                 
+                 //@{@"phone":@"13112345678",@"time":@"2015-08-26 15:36:33",@"itemName":@"嗒嗒巴士"}
+                 [self.tableView reloadData];
+             }
+             
+         }
+     
+         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             
+             [self hideHud];
+             
+             SHAlert(@"服务器请求失败,请检测您的网络.");
+             
+         }
+     
+     ];
+}
+
 @end

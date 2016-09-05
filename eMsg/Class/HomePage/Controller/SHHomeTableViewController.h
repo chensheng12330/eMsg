@@ -14,4 +14,5 @@
 @property (strong, nonatomic) IBOutlet UITableViewCell *myCell1;
 @property (strong, nonatomic) IBOutlet UITableViewCell *myCell2;
 
+- (IBAction)actionGetPhoneNum:(UIButton *)sender;
 @end

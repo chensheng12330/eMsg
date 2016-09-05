@@ -84,7 +84,12 @@ static SHURLConfig *_sharedURLConfig= nil;
     return [NSString stringWithFormat:@"%@/Api/userGetItems?token=%@&tp=ut",[self getHost],userToken];
 }
 
-
+-(NSString*) getPhoneNumForToken:(NSString *)token itemID:(NSString *)itemID phoneType:(NSInteger)phoneType
+{
+    //http://api.ema6.com:20161/Api/userGetPhone?ItemId=项目ID&token=登陆token&PhoneType=0
+    
+    return [NSString stringWithFormat:@"%@/Api/userGetPhone?ItemId=%@&token=%@&PhoneType=%ld",[self getHost],token,itemID,phoneType];
+}
 
 
 -(NSString*) getLoginForU:(NSString*)uName P:(NSString*) pWd

@@ -23,6 +23,9 @@
 
 -(NSString*) getArea;
 
+-(NSString*) getPhoneNumForToken:(NSString*) token itemID:(NSString*) itemID phoneType:(NSInteger) phoneType;
+
+
 -(NSString*) getLoginForUsr:(NSString *)uName P:(NSString *)pWd;
 
 -(NSString*) getPlatformItemsForUTok:(NSString*) userToken;
