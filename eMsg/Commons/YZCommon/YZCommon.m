@@ -195,4 +195,22 @@ static YZCommon *_sharedYZCommon = nil;
 {
     return [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
 }
+
+-(NSError*) isOK4String:(NSString*)strData
+{
+    NSError *error = nil;
+    if (strData == NULL  && strData.length<1) {
+        error = [NSError errorWithDomain:@"NetReq" code:1 userInfo:@{@"error":@"数据为空."}];
+        return error;
+    }
+    
+    //False:用户名密码错误!
+    if ([[strData substringToIndex:6] isEqualToString:@"False:"]) {
+        error = [NSError errorWithDomain:@"NetReq" code:1 userInfo:@{@"error":strData}];
+        return error;
+    }
+    
+    return error;
+}
+
 @end

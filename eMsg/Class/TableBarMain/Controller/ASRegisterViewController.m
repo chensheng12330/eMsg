@@ -377,7 +377,7 @@
              NSDictionary *responseData = responseObject;
              
              // 请求成功
-             if([COM isOK:responseData]==0) {
+             if(0) {// [COM isOK:responseData]==
                  
                  NSInteger code = [[responseData objectForKey:@"smscode_id"] integerValue];
                  
@@ -451,7 +451,7 @@
              NSDictionary *responseData = responseObject;
              
              // 请求成功
-             if([COM isOK:responseData]==0) {
+             if(0) {//[COM isOK:responseData]==
                  
                  
                  block(YES,[responseData objectForKey:@"msg"]);

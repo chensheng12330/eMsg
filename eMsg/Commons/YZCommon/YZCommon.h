@@ -28,7 +28,7 @@
 +(YZCommon*) sharedCommon;
 
 
--(NSInteger) isOK:(NSDictionary*) info;
+//-(NSInteger) isOK:(NSDictionary*) info;
 
 
 
@@ -66,4 +66,6 @@
 
 -(BOOL) getFirstGuide;
 -(void) setFirstGuide:(BOOL)bYesOrNo;
+
+-(NSError*) isOK4String:(NSString*)strData;
 @end

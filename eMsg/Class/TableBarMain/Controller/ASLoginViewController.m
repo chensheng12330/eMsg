@@ -234,7 +234,16 @@
              }
              else{
                  
-                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:4];
+                 //False:用户名密码错误!
+                 NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:enc];
+                 
+                 NSError *error=[COM isOK4String:respStr];
+                 if (error) {
+                     NSString *einfo = error.userInfo[@"error"];
+                     SHAlert(einfo);
+                     return ;
+                 }
                  
                  COM.mUser = [[SLYUser alloc] initWithIniString:respStr];
                  COM.mUser.strName =_userNameField.text;
