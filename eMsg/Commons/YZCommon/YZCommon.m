@@ -213,4 +213,29 @@ static YZCommon *_sharedYZCommon = nil;
     return error;
 }
 
+/*
+ 0: 请求正确
+ 1: 错误，Session 过期.
+ 2: 错误，参数不正确.
+ */
+-(int) getCodeFromRespString:(NSString*)strData
+{
+    int code = 0;
+    
+    if ([strData rangeOfString:@"False:"].location != NSNotFound) {
+        //出错
+        
+        if ([strData rangeOfString:@"Session 过期"].location != NSNotFound) {
+            
+            code=1;
+        }
+        else
+        {
+            code=2;
+        }
+    }
+    
+    return code;
+}
+
 @end

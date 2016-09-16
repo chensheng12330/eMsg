@@ -67,5 +67,6 @@
 -(BOOL) getFirstGuide;
 -(void) setFirstGuide:(BOOL)bYesOrNo;
 
+-(int) getCodeFromRespString:(NSString*)strData;
 -(NSError*) isOK4String:(NSString*)strData;
 @end

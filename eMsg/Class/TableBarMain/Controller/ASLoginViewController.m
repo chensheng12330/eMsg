@@ -213,13 +213,7 @@
     
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    //manager.requestSerializer.acceptableContentTypes =
-    //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    //manager.requestSerializer.timeoutInterval = 10.0f;
-    
-    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    
+
     [manager GET:[UC getLoginForUsr:_userNameField.text P:_pwdField.text]
       parameters:nil
         progress:nil
@@ -235,8 +229,7 @@
              else{
                  
                  //False:用户名密码错误!
-                 NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:enc];
+                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:4];
                  
                  NSError *error=[COM isOK4String:respStr];
                  if (error) {

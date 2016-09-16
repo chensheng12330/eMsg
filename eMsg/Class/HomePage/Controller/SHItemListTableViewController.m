@@ -122,9 +122,19 @@
              }
              else
              {
-                 NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-                 
-                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:enc];
+                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:4];
+                 int code = [COM getCodeFromRespString:respStr];
+                 if (code==1) {
+                     //过期，需要重新登陆.
+                     
+                     return ;
+                 }
+                 else if(code==2){
+                     //请求失败.
+                     SHAlert(@"请求失败,请您重试.");
+                     return ;
+                 }
+            
                  self.dataSource =  [respStr componentsSeparatedByString:@"\n"];
                  [self.tableView reloadData];
              }
@@ -151,7 +161,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer.timeoutInterval = 15.0f;
     
-    [manager GET:[UC getPlatformItemsForUTok:COM.mUser.strUserToken]
+    [manager GET:[UC getPlatformItemsForUTok:COM.mUser.strUserToken] //
       parameters:nil
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable responseObject) {
@@ -164,9 +174,20 @@
              else
              {
                  //项目ID&项目名称&项目价格&项目类型\n
-                 NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
                  
-                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:enc];
+                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:4];
+                 int code = [COM getCodeFromRespString:respStr];
+                 if (code==1) {
+                     //过期，需要重新登陆.
+                     
+                     return ;
+                 }
+                 else if(code==2){
+                     //请求失败.
+                     SHAlert(@"请求失败,请您重试.");
+                     return ;
+                 }
+                 
                  NSArray *itemInfoList =  [respStr componentsSeparatedByString:@"\n"];
                  
                  NSMutableArray *addSource = [NSMutableArray new];
@@ -318,6 +339,8 @@
         }
         
         [self.delegate didSelectItemListWithData:objData requestDataType:self.dataType];
+        
+        [self.navigationController popViewControllerAnimated:YES];
     }
     
     // Pass the selected object to the new view controller.

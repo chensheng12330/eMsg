@@ -43,6 +43,9 @@
     NSString *fileP = [NSString stringWithFormat:@"%@/%@_phone_num_list",SH_LibraryDir,COM.mUser.strUserName];
     
     self.arPhoneNumList = [[NSMutableArray alloc] initWithContentsOfFile:fileP];
+    if (self.arPhoneNumList==NULL) {
+        self.arPhoneNumList = [[NSMutableArray alloc] init];
+    }
 }
 
 -(void) savePhoneNumListToFile
@@ -134,7 +137,8 @@
         
         NSDictionary *phoneInfo = self.arPhoneNumList[indexPath.row];
         
-        [cell.lbTitle     setText:phoneInfo[@""]];
+        [cell.lbTitle     setText:phoneInfo[SHModel_PHONE_PhoneNum]];
+        [cell.lbDetail setText:[NSString stringWithFormat:@"%@[20分钟过期]",phoneInfo[SHModel_PHONE_ItemName]]];
         
         return cell;
     }
@@ -298,6 +302,7 @@
         SHItemListTableViewController *itemListVC = [[SHItemListTableViewController alloc]init];
         itemListVC.hidesBottomBarWhenPushed = YES;
         itemListVC.dataType = IL_Type_Area;
+        itemListVC.delegate = self;
         [self.navigationController pushViewController:itemListVC animated:YES];
     }
     else if (tid==3)
@@ -358,13 +363,12 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 
 -(void) getPhoneNum
 {
-    
     [self showHudInView:self.view hint:@"正在获取电话号码..."];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer.timeoutInterval = 15.0f;
     
-    [manager GET:[UC getPhoneNumForToken:COM.mUser.strUserToken itemID:self.dtPlatform[@"IL_ItemID"] phoneType:self.nSpSel]
+    [manager GET:[UC getPhoneNumForToken:COM.mUser.strUserToken itemID:self.dtPlatform[IL_ItemID] phoneType:self.nSpSel]
       parameters:nil
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable responseObject) {
@@ -376,24 +380,36 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
              }
              else
              {
-                 NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-                 
-                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:enc];
+       
+                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:4];
                  
                  //错误处理
                  //False:Session 过期
                  
-                 if ([[respStr substringToIndex:4] isEqualToString:@"False"]) {
-                     
+                 if (![COM getCodeFromRespString:respStr]) {
+                     SHAlert(@"获取失败,请重试...");
+                     return ;
                  }
-                 else{
-                     
-                 }
+
                  
                  NSArray *arPhoneList =  [respStr componentsSeparatedByString:@";"];
+                 if (arPhoneList.count<1) {
+                     //未获取到手机号码
+                     SHAlert(@"此平台的手机号码无法获取,请换其它平台...");
+                 }
+                 else
+                 {
+                     NSDictionary *phoneInfo = @{SHModel_PHONE_PhoneNum:arPhoneList.firstObject,
+                                                SHModel_PHONE_CreateTime:[self string4Date:[NSDate date]],
+                                                SHModel_PHONE_ItemName:self.dtPlatform[IL_ItemName]};
+                     [self.arPhoneNumList addObject:phoneInfo];
+                     
+                     // 侟入数据
+                     [self savePhoneNumListToFile];
+                     
+                     [self.tableView reloadData];
+                 }
                  
-                 //@{@"phone":@"13112345678",@"time":@"2015-08-26 15:36:33",@"itemName":@"嗒嗒巴士"}
-                 [self.tableView reloadData];
              }
              
          }
@@ -406,6 +422,24 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
          }
      
      ];
+}
+
+-(NSString*) string4Date:(NSDate*) date
+{
+    static NSDateFormatter * dateFormat=nil;
+    dateFormat =  [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    return [dateFormat stringFromDate:date];
+}
+
+-(NSDate*) date4String:(NSString*) strDate
+{
+    static NSDateFormatter * dateFormat=nil;
+    dateFormat =  [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    return [dateFormat dateFromString:strDate];
 }
 
 @end
