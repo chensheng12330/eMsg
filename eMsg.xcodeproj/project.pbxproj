@@ -29,6 +29,10 @@
 		58207C3F1D71F01F0093478A /* SHItemListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58207C3D1D71F01F0093478A /* SHItemListTableViewController.xib */; };
 		582F6EB21C4C82DD005CB10C /* SHURLConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 582F6EB11C4C82DD005CB10C /* SHURLConfig.m */; };
 		582F6EB51C4CAF43005CB10C /* SLYBaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 582F6EB41C4CAF43005CB10C /* SLYBaseEntity.m */; };
+		583B5B691D8D44F400F6A598 /* SHMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 583B5B631D8D44F400F6A598 /* SHMessageTableViewController.m */; };
+		583B5B6A1D8D44F400F6A598 /* SHMessageTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 583B5B641D8D44F400F6A598 /* SHMessageTableViewController.xib */; };
+		583B5B6B1D8D44F400F6A598 /* SHMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 583B5B671D8D44F400F6A598 /* SHMessageTableViewCell.m */; };
+		583B5B6C1D8D44F400F6A598 /* SHMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 583B5B681D8D44F400F6A598 /* SHMessageTableViewCell.xib */; };
 		587511C01D70412A0034D583 /* SLYUserInfoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5875118F1D70412A0034D583 /* SLYUserInfoTableViewController.xib */; };
 		587511C21D70412A0034D583 /* SLYAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587511941D70412A0034D583 /* SLYAboutTableViewController.m */; };
 		587511C31D70412A0034D583 /* SLYAppSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587511961D70412A0034D583 /* SLYAppSettingTableViewController.m */; };
@@ -169,6 +173,12 @@
 		582F6EB11C4C82DD005CB10C /* SHURLConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHURLConfig.m; sourceTree = "<group>"; };
 		582F6EB31C4CAF43005CB10C /* SLYBaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYBaseEntity.h; sourceTree = "<group>"; };
 		582F6EB41C4CAF43005CB10C /* SLYBaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYBaseEntity.m; sourceTree = "<group>"; };
+		583B5B621D8D44F400F6A598 /* SHMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMessageTableViewController.h; sourceTree = "<group>"; };
+		583B5B631D8D44F400F6A598 /* SHMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMessageTableViewController.m; sourceTree = "<group>"; };
+		583B5B641D8D44F400F6A598 /* SHMessageTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMessageTableViewController.xib; sourceTree = "<group>"; };
+		583B5B661D8D44F400F6A598 /* SHMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMessageTableViewCell.h; sourceTree = "<group>"; };
+		583B5B671D8D44F400F6A598 /* SHMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMessageTableViewCell.m; sourceTree = "<group>"; };
+		583B5B681D8D44F400F6A598 /* SHMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMessageTableViewCell.xib; sourceTree = "<group>"; };
 		587511901D70412A0034D583 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SLYUserInfoTableViewController.xib; sourceTree = "<group>"; };
 		587511931D70412A0034D583 /* SLYAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLYAboutTableViewController.h; sourceTree = "<group>"; };
 		587511941D70412A0034D583 /* SLYAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLYAboutTableViewController.m; sourceTree = "<group>"; };
@@ -458,6 +468,35 @@
 			path = PQActionSheet;
 			sourceTree = "<group>";
 		};
+		583B5B601D8D44F400F6A598 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				583B5B611D8D44F400F6A598 /* Controller */,
+				583B5B651D8D44F400F6A598 /* View */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		583B5B611D8D44F400F6A598 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				583B5B621D8D44F400F6A598 /* SHMessageTableViewController.h */,
+				583B5B631D8D44F400F6A598 /* SHMessageTableViewController.m */,
+				583B5B641D8D44F400F6A598 /* SHMessageTableViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		583B5B651D8D44F400F6A598 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				583B5B661D8D44F400F6A598 /* SHMessageTableViewCell.h */,
+				583B5B671D8D44F400F6A598 /* SHMessageTableViewCell.m */,
+				583B5B681D8D44F400F6A598 /* SHMessageTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		5875118D1D70412A0034D583 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,6 +747,7 @@
 		58FA624F1D6F3DDB009667A6 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				583B5B601D8D44F400F6A598 /* Message */,
 				5875118D1D70412A0034D583 /* Setting */,
 				58FA62501D6F3DDB009667A6 /* HomePage */,
 				58FA62581D6F3DDB009667A6 /* TableBarMain */,
@@ -1103,7 +1143,9 @@
 				587511CE1D70412A0034D583 /* app_device_en.json in Resources */,
 				587511C01D70412A0034D583 /* SLYUserInfoTableViewController.xib in Resources */,
 				587511CC1D70412A0034D583 /* app_about_en.json in Resources */,
+				583B5B6A1D8D44F400F6A598 /* SHMessageTableViewController.xib in Resources */,
 				58FA61EB1D6F24E1009667A6 /* MJRefresh.bundle in Resources */,
+				583B5B6C1D8D44F400F6A598 /* SHMessageTableViewCell.xib in Resources */,
 				880C851F1C32546C00165087 /* Assets.xcassets in Resources */,
 				58207C3A1D719A9B0093478A /* SHHomeTableViewController.xib in Resources */,
 				587511D01D70412A0034D583 /* app_setting_en.json in Resources */,
@@ -1166,6 +1208,7 @@
 				882780B21C326FE500571919 /* pinyin.c in Sources */,
 				882780D51C32877900571919 /* UIImage+TMBFoundation.m in Sources */,
 				58FA620C1D6F267E009667A6 /* MASConstraint.m in Sources */,
+				583B5B691D8D44F400F6A598 /* SHMessageTableViewController.m in Sources */,
 				58E118BF1C47A1CE00540772 /* ALDisk.m in Sources */,
 				58DB264B1C33B73400CBAD58 /* UIViewController+HUD.m in Sources */,
 				58FA61E61D6F24E1009667A6 /* MJRefreshBackNormalFooter.m in Sources */,
@@ -1201,6 +1244,7 @@
 				58FA61E81D6F24E1009667A6 /* MJRefreshGifHeader.m in Sources */,
 				58FA61E11D6F24E1009667A6 /* MJRefreshHeader.m in Sources */,
 				58FA62661D6F3DDB009667A6 /* ASLoginViewController.m in Sources */,
+				583B5B6B1D8D44F400F6A598 /* SHMessageTableViewCell.m in Sources */,
 				882780BC1C32733300571919 /* IPAddress.c in Sources */,
 				582F6EB51C4CAF43005CB10C /* SLYBaseEntity.m in Sources */,
 				88B60FFA1C4CEB6100ADA728 /* UIButton+CountDown.m in Sources */,

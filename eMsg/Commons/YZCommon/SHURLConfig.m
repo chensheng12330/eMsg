@@ -95,6 +95,8 @@ static SHURLConfig *_sharedURLConfig= nil;
 {
     return [NSString stringWithFormat:@"%@/Api/userGetMessage?token=%@",[self getHost],token];
 }
+///////////////////////////
+
 
 -(NSString*) getLoginForU:(NSString*)uName P:(NSString*) pWd
 {
