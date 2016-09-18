@@ -9,14 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface SHMessageTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *ivImageVIew;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbPhoneNum;
+@property (weak, nonatomic) IBOutlet UILabel *lbDate;
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
-@property (weak, nonatomic) IBOutlet UILabel *lbDetail;
-
-@property (weak, nonatomic) IBOutlet UISwitch *swSwitch;
-
-
-@property (weak, nonatomic) IBOutlet UIButton *btnButton;
-
-
+@property (weak, nonatomic) IBOutlet UILabel *lbMsg;
+@property (weak, nonatomic) IBOutlet UILabel *lbIsRead;
 @end

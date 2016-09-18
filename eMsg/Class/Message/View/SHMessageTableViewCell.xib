@@ -75,7 +75,14 @@
                     <constraint firstItem="paE-gy-2os" firstAttribute="leading" secondItem="uU5-oi-v6N" secondAttribute="leading" id="zWU-5Z-3Ix"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="345" y="299"/>
+            <connections>
+                <outlet property="lbDate" destination="yTQ-vP-wJK" id="NHm-DF-Jz4"/>
+                <outlet property="lbIsRead" destination="M2G-xw-DGK" id="g4U-tD-dCH"/>
+                <outlet property="lbMsg" destination="F9A-Lw-GP8" id="ahS-zD-pDb"/>
+                <outlet property="lbPhoneNum" destination="paE-gy-2os" id="9Hm-bG-DGL"/>
+                <outlet property="lbTitle" destination="uU5-oi-v6N" id="S4u-8f-POD"/>
+            </connections>
+            <point key="canvasLocation" x="296" y="312"/>
         </tableViewCell>
     </objects>
 </document>

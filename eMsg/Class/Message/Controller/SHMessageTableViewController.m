@@ -30,6 +30,8 @@
     //[self createRefreshControl];
     
     //[self refreshAction];
+    //1监听消息通知 [Home发过来的]
+    //2加载本地 消息存储文件数据.
     
     self.dataSource = @[@"1",@"2"];
 }
