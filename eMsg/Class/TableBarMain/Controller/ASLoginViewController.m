@@ -237,6 +237,7 @@
                      SHAlert(einfo);
                      return ;
                  }
+                 NSLog(@"%@",respStr);
                  
                  COM.mUser = [[SLYUser alloc] initWithIniString:respStr];
                  COM.mUser.strName =_userNameField.text;

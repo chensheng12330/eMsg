@@ -25,7 +25,7 @@
 
 -(NSString*) getPhoneNumForToken:(NSString*) token itemID:(NSString*) itemID phoneType:(NSInteger) phoneType;
 
--(NSString*) getGetMessage;
+-(NSString*) getGetMessage4Token:(NSString *)token;
 
 //////////////////////////
 -(NSString*) getLoginForUsr:(NSString *)uName P:(NSString *)pWd;

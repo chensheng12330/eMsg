@@ -62,6 +62,7 @@
 		589E93791C53676F007384C8 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 589E93781C53676F007384C8 /* CoreText.framework */; };
 		589E937F1C536CE5007384C8 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 589E937E1C536CE5007384C8 /* libiconv.tbd */; };
 		589E93811C536CF7007384C8 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 589E93801C536CF7007384C8 /* libbz2.tbd */; };
+		58D52A1B1D9035AD00CE4AC4 /* SHMsgLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D52A1A1D9035AD00CE4AC4 /* SHMsgLoad.m */; };
 		58DB264B1C33B73400CBAD58 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DB264A1C33B73400CBAD58 /* UIViewController+HUD.m */; };
 		58DB26591C33BA0100CBAD58 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DB26561C33BA0100CBAD58 /* NSString+Category.m */; };
 		58E118BF1C47A1CE00540772 /* ALDisk.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E118BE1C47A1CE00540772 /* ALDisk.m */; };
@@ -217,6 +218,8 @@
 		589E937C1C536CDE007384C8 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		589E937E1C536CE5007384C8 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		589E93801C536CF7007384C8 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		58D52A191D9035AD00CE4AC4 /* SHMsgLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMsgLoad.h; sourceTree = "<group>"; };
+		58D52A1A1D9035AD00CE4AC4 /* SHMsgLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMsgLoad.m; sourceTree = "<group>"; };
 		58DB26491C33B73400CBAD58 /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
 		58DB264A1C33B73400CBAD58 /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
 		58DB26531C33B8E900CBAD58 /* SHMacroDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMacroDefine.h; sourceTree = "<group>"; };
@@ -483,6 +486,8 @@
 				583B5B621D8D44F400F6A598 /* SHMessageTableViewController.h */,
 				583B5B631D8D44F400F6A598 /* SHMessageTableViewController.m */,
 				583B5B641D8D44F400F6A598 /* SHMessageTableViewController.xib */,
+				58D52A191D9035AD00CE4AC4 /* SHMsgLoad.h */,
+				58D52A1A1D9035AD00CE4AC4 /* SHMsgLoad.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1197,6 +1202,7 @@
 				8884CF0C1C5A0B5A003C795D /* SLYFullScreenViewController.m in Sources */,
 				58FA61E41D6F24E1009667A6 /* MJRefreshAutoStateFooter.m in Sources */,
 				58FA620F1D6F267E009667A6 /* MASViewAttribute.m in Sources */,
+				58D52A1B1D9035AD00CE4AC4 /* SHMsgLoad.m in Sources */,
 				8867FCA61C92C893005F82B6 /* AFURLRequestSerialization.m in Sources */,
 				58FA61EF1D6F24E1009667A6 /* UIView+MJExtension.m in Sources */,
 				587511C21D70412A0034D583 /* SLYAboutTableViewController.m in Sources */,
