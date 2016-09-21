@@ -73,23 +73,42 @@
          success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable responseObject) {
              
              if (responseObject==NULL || responseObject.length<1) {
-                 
+                 [self performSelector:@selector(startMsgLoad) withObject:nil afterDelay:5];
              }
              else
              {
                  
                  NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:4];
                  
+                 NSLog(@"[respStr] %@",respStr);
+                 
                  //错误处理
                  //False:Session 过期
                  
                  if (![COM getCodeFromRespString:respStr]) {
-                  
+                     [self performSelector:@selector(startMsgLoad) withObject:nil afterDelay:5];
                      return ;
                  }
                  
+                 //解释短信内容;
+                 BOOL isOK = NO;
+                 NSArray *msgQueue = [respStr componentsSeparatedByString:@"[End]"];
+                 for (NSString *msgStr in msgQueue) {
+                     if ([msgStr hasSuffix:@"MSG"]) {
+                         //MSG&12711&13002964529&验证码
+                         //MSG&项目ID&号码&短信内容
+                         isOK = YES;
+                         NSArray *msgParam = [msgStr componentsSeparatedByString:@"&"];
+                         NSLog(@"MSG: %@",msgParam);
+                         break;
+                     }
+                 }
                  
-                 NSArray *arPhoneList =  [respStr componentsSeparatedByString:@";"];
+                 if (isOK == NO) {
+                     [self performSelector:@selector(startMsgLoad) withObject:nil afterDelay:5];
+                 }
+                 /*
+                 NSArray *arPhoneList =  [respStr componentsSeparatedByString:@"[End]"];
                  if (arPhoneList.count<1) {
                      //未获取到手机号码
                  
@@ -98,7 +117,7 @@
                  {
                      // 侟入数据
  
-                 }
+                 }*/
                  
              }
              
@@ -110,6 +129,11 @@
          }
      
      ];
+}
+
+-(void) stopMsgLoad
+{
+    [SHMsgLoad cancelPreviousPerformRequestsWithTarget:self];
 }
 
 @end

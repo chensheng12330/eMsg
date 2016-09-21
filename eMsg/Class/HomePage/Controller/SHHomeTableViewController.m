@@ -21,6 +21,7 @@
 #import "SHSettingTableViewCell.h"
 #import "SHHomeTableViewController.h"
 #import "SHItemListTableViewController.h"
+#import "SHMsgLoad.h"
 
 @interface SHHomeTableViewController ()<PQActionSheetDelegate,ItemListDelegate>
 @property (strong, nonatomic) NSDictionary *dataSource;
@@ -34,6 +35,8 @@
 @property (nonatomic, strong) NSDictionary *dtPlatform;
 
 @property (nonatomic, strong) NSMutableArray *arPhoneNumList;
+
+@property (nonatomic, strong) SHMsgLoad *msgLoad;
 @end
 
 @implementation SHHomeTableViewController
@@ -70,6 +73,7 @@
     
     self.clearsSelectionOnViewWillAppear = NO;
     //[self setHidesBottomBarWhenPushed:YES];
+    self.msgLoad = [[SHMsgLoad alloc] init];
     
     [self loadPhoneNumListFromFile];
 }
@@ -386,7 +390,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
                  //错误处理
                  //False:Session 过期
                  
-                 if (![COM getCodeFromRespString:respStr]) {
+                 if ([COM getCodeFromRespString:respStr] != 0) {
                      SHAlert(@"获取失败,请重试...");
                      return ;
                  }
@@ -404,10 +408,14 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
                                                 SHModel_PHONE_ItemName:self.dtPlatform[IL_ItemName]};
                      [self.arPhoneNumList addObject:phoneInfo];
                      
+                     NSLog(@"%@",phoneInfo);
                      // 侟入数据
                      [self savePhoneNumListToFile];
                      
                      [self.tableView reloadData];
+                     
+                     [self.msgLoad stopMsgLoad];
+                     [self.msgLoad startMsgLoad];
                  }
                  
              }

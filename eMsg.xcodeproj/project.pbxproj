@@ -66,6 +66,9 @@
 		58DB264B1C33B73400CBAD58 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DB264A1C33B73400CBAD58 /* UIViewController+HUD.m */; };
 		58DB26591C33BA0100CBAD58 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DB26561C33BA0100CBAD58 /* NSString+Category.m */; };
 		58E118BF1C47A1CE00540772 /* ALDisk.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E118BE1C47A1CE00540772 /* ALDisk.m */; };
+		58E7FE041D92C7AC00A1052E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E7FE031D92C7AC00A1052E /* CoreData.framework */; };
+		58E7FE2E1D92D4E700A1052E /* libMagicalRecord.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E7FE2D1D92D4E700A1052E /* libMagicalRecord.a */; };
+		58E7FE311D92D95900A1052E /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58E7FE2F1D92D95900A1052E /* DataModel.xcdatamodeld */; };
 		58FA61A31D6F2045009667A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FA61A21D6F2045009667A6 /* UIKit.framework */; };
 		58FA61D91D6F24E1009667A6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 58FA61A51D6F24E0009667A6 /* LICENSE */; };
 		58FA61DA1D6F24E1009667A6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA61A71D6F24E0009667A6 /* MBProgressHUD.m */; };
@@ -227,6 +230,9 @@
 		58DB26561C33BA0100CBAD58 /* NSString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Category.m"; sourceTree = "<group>"; };
 		58E118BD1C47A1CE00540772 /* ALDisk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALDisk.h; sourceTree = "<group>"; };
 		58E118BE1C47A1CE00540772 /* ALDisk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALDisk.m; sourceTree = "<group>"; };
+		58E7FE031D92C7AC00A1052E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		58E7FE2D1D92D4E700A1052E /* libMagicalRecord.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMagicalRecord.a; sourceTree = "<group>"; };
+		58E7FE301D92D95900A1052E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		58FA61A21D6F2045009667A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		58FA61A51D6F24E0009667A6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		58FA61A61D6F24E0009667A6 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -422,6 +428,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58E7FE041D92C7AC00A1052E /* CoreData.framework in Frameworks */,
 				58FA61A31D6F2045009667A6 /* UIKit.framework in Frameworks */,
 				589E93811C536CF7007384C8 /* libbz2.tbd in Frameworks */,
 				589E937F1C536CE5007384C8 /* libiconv.tbd in Frameworks */,
@@ -432,6 +439,7 @@
 				E3E0F9991C5326C500BA588A /* ImageIO.framework in Frameworks */,
 				88EBA23A1C51D9BE0040CE03 /* CoreTelephony.framework in Frameworks */,
 				88EBA2321C51D99B0040CE03 /* SystemConfiguration.framework in Frameworks */,
+				58E7FE2E1D92D4E700A1052E /* libMagicalRecord.a in Frameworks */,
 				88EBA2301C51D98C0040CE03 /* OpenGLES.framework in Frameworks */,
 				88EBA22E1C51D9840040CE03 /* QuartzCore.framework in Frameworks */,
 				88EBA22C1C51D97D0040CE03 /* CoreLocation.framework in Frameworks */,
@@ -601,6 +609,14 @@
 				58E118BE1C47A1CE00540772 /* ALDisk.m */,
 			);
 			path = ALDisk;
+			sourceTree = "<group>";
+		};
+		58E7FE0A1D92D4E700A1052E /* MagicalRecord */ = {
+			isa = PBXGroup;
+			children = (
+				58E7FE2D1D92D4E700A1052E /* libMagicalRecord.a */,
+			);
+			path = MagicalRecord;
 			sourceTree = "<group>";
 		};
 		58FA61A41D6F24E0009667A6 /* MBProgressHUD */ = {
@@ -862,6 +878,7 @@
 			isa = PBXGroup;
 			children = (
 				880C85131C32546C00165087 /* main.m */,
+				58E7FE2F1D92D95900A1052E /* DataModel.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -950,6 +967,7 @@
 		885C9E491C3257CB00351BED /* ThirdPart (三方) */ = {
 			isa = PBXGroup;
 			children = (
+				58E7FE0A1D92D4E700A1052E /* MagicalRecord */,
 				58207C351D7197550093478A /* PQActionSheet */,
 				58FA61F11D6F267E009667A6 /* Masonry */,
 				58FA61A41D6F24E0009667A6 /* MBProgressHUD */,
@@ -1029,6 +1047,7 @@
 		9DC7A6692EA8AF0640F16937 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58E7FE031D92C7AC00A1052E /* CoreData.framework */,
 				58FA61A21D6F2045009667A6 /* UIKit.framework */,
 				589E93801C536CF7007384C8 /* libbz2.tbd */,
 				589E937E1C536CE5007384C8 /* libiconv.tbd */,
@@ -1204,6 +1223,7 @@
 				58FA620F1D6F267E009667A6 /* MASViewAttribute.m in Sources */,
 				58D52A1B1D9035AD00CE4AC4 /* SHMsgLoad.m in Sources */,
 				8867FCA61C92C893005F82B6 /* AFURLRequestSerialization.m in Sources */,
+				58E7FE311D92D95900A1052E /* DataModel.xcdatamodeld in Sources */,
 				58FA61EF1D6F24E1009667A6 /* UIView+MJExtension.m in Sources */,
 				587511C21D70412A0034D583 /* SLYAboutTableViewController.m in Sources */,
 				E312F3CA1C43AB3C0041134F /* YZFileManage.m in Sources */,
@@ -1421,12 +1441,19 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/eMsg/ThirdPart",
+				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/eMsg/Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/eMsg/ThirdPart/MagicalRecord/include";
 				INFOPLIST_FILE = eMsg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/eMsg/ThirdPart/MagicalRecord",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1447,12 +1474,19 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/eMsg/ThirdPart",
+				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/eMsg/Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/eMsg/ThirdPart/MagicalRecord/include";
 				INFOPLIST_FILE = eMsg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/eMsg/ThirdPart/MagicalRecord",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1496,6 +1530,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		58E7FE2F1D92D95900A1052E /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				58E7FE301D92D95900A1052E /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 58E7FE301D92D95900A1052E /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 880C85071C32546C00165087 /* Project object */;
 }
