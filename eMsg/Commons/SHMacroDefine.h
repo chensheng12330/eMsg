@@ -10,7 +10,7 @@
 #define SHMacroDefine
 
 
-
+#define SHLog(format, ...) NSLog(format, ##__VA_ARGS__)
 
 #define NavigationBar_HEIGHT 44
 

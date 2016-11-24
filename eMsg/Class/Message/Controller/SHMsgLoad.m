@@ -8,6 +8,7 @@
 
 #import "SHMsgLoad.h"
 
+
 @interface SHMsgLoad ()
 @end
 
@@ -98,14 +99,25 @@
                          //MSG&12711&13002964529&验证码
                          //MSG&项目ID&号码&短信内容
                          isOK = YES;
-                         NSArray *msgParam = [msgStr componentsSeparatedByString:@"&"];
-                         NSLog(@"MSG: %@",msgParam);
+                         
+                         SHShowMsgInfo *msgInfo = [[SHShowMsgInfo alloc] initWithMsgString:msgStr];
+                         if (msgInfo) {
+                             self.latelyMsgInfo = msgInfo;
+                             
+                             //发送 Noti消息
+                             [[NSNotificationCenter defaultCenter] postNotificationName:kMSG_RECV_NOTI object:msgInfo];
+                             NSLog(@"MSG: %@",msgStr);
+                         }
+
                          break;
                      }
                  }
                  
                  if (isOK == NO) {
                      [self performSelector:@selector(startMsgLoad) withObject:nil afterDelay:5];
+                 }
+                 else{
+                     
                  }
                  /*
                  NSArray *arPhoneList =  [respStr componentsSeparatedByString:@"[End]"];

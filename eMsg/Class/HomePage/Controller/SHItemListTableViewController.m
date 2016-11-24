@@ -169,7 +169,8 @@
              [self stopHUB];
              
              if (responseObject==NULL || responseObject.length<1) {
-                 
+                 SHAlert(@"请求失败,请您重试.");
+                 return ;
              }
              else
              {
@@ -202,6 +203,13 @@
                          [itemInfo setObject:itemInfoList[3] forKey:IL_ItemType];
                          [addSource addObject:itemInfo];
                      }
+                 }
+                 
+                 if (itemInfoList.count>0) {
+                     
+                     NSString *fileP = [NSString stringWithFormat:@"%@/%@_itemInfoList",SH_LibraryDir,COM.mUser.strUserName];
+                     [addSource writeToFile:fileP atomically:YES];
+                     
                  }
                  
                  self.dataSource = addSource;
@@ -389,6 +397,32 @@
     [self.searchController setActive:NO];
     self.filterData = self.dataSource;
     [self.tableView reloadData];
+}
+
++(NSArray*) getItemsFromDB
+{
+    NSString *fileP = [NSString stringWithFormat:@"%@/%@_itemInfoList",SH_LibraryDir,COM.mUser.strUserName];
+     return [[NSArray alloc] initWithContentsOfFile:fileP];
+}
+
++(NSString*) getPlatformNameWithItemID:(NSString *) itemID
+{
+    if (itemID.length<1) {
+        return nil;
+    }
+    
+    NSArray *saveItems = [self getItemsFromDB];
+    if (saveItems.count<1) {
+        return nil;
+    }
+    
+    for (NSDictionary *info in saveItems) {
+        if ([itemID isEqualToString:info[IL_ItemID]]) {
+            return info[IL_ItemName];
+        }
+    }
+    
+    return nil;
 }
 
 @end

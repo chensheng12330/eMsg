@@ -16,8 +16,9 @@
 #import "ASLoginViewController.h"
 #import "SLYNavigationController.h"
 
-@interface AppDelegate ()
+static NSString* kRecipesStoreName =@"DataModel.sqlite";
 
+@interface AppDelegate ()
 
 @end
 
@@ -43,6 +44,11 @@
 //    [self installUMAnalytics];
     
 
+    //Core Data
+    [MagicalRecord setLoggingLevel:MagicalRecordLoggingLevelVerbose];
+    //[MagicalRecord setupCoreDataStackWithStoreNamed:kRecipesStoreName];
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:kRecipesStoreName];
+    
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -84,7 +90,8 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-
+    [MagicalRecord cleanUp];
+    return;
 }
 
 //-(UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {

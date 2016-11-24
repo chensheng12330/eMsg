@@ -1,12 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHMessageTableViewCell">
+            <connections>
+                <outlet property="lbDate" destination="yTQ-vP-wJK" id="mL1-98-xte"/>
+                <outlet property="lbIsRead" destination="M2G-xw-DGK" id="kNd-bb-UKu"/>
+                <outlet property="lbMsg" destination="F9A-Lw-GP8" id="qwN-n2-Oc3"/>
+                <outlet property="lbPhoneNum" destination="paE-gy-2os" id="cgE-Yw-1MI"/>
+                <outlet property="lbTitle" destination="uU5-oi-v6N" id="YCe-wC-R7k"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SHSettingTableViewCell" rowHeight="120" id="i8g-2z-6RA" customClass="SHMessageTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
@@ -27,7 +39,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="果你跟我经历相似，你可能因为对 Docker 充满热情而被它的一些缺点蒙蔽了眼睛。不要误解我，我并不是说 Docker 不好。我的意思是它并没有那么完美。所以接下来让我们来看一下它的一些不足之处吧" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9A-Lw-GP8">
                         <rect key="frame" x="8" y="55" width="279" height="72"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.42352941176470588" green="0.41960784313725491" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.42352941176470588" green="0.41960784313725491" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/08/03" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTQ-vP-wJK">
@@ -36,18 +48,18 @@
                             <constraint firstAttribute="width" constant="85" id="I30-W5-8VN"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.43131516081839549" green="0.42712763498520712" blue="0.43550268665158376" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.43131516081839549" green="0.42712763498520712" blue="0.43550268665158376" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未读" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2G-xw-DGK">
                         <rect key="frame" x="243" y="38" width="44" height="17"/>
-                        <color key="backgroundColor" red="0.81960784310000001" green="0.1960784314" blue="0.21960784310000001" alpha="0.72473060344827589" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.81960784310000001" green="0.1960784314" blue="0.21960784310000001" alpha="0.72473060344827589" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="44" id="ObO-S6-Sgo"/>
                             <constraint firstAttribute="height" constant="17" id="gv5-a0-bs0"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="嗒嗒巴士接你上下班" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uU5-oi-v6N">
@@ -82,7 +94,7 @@
                 <outlet property="lbPhoneNum" destination="paE-gy-2os" id="9Hm-bG-DGL"/>
                 <outlet property="lbTitle" destination="uU5-oi-v6N" id="S4u-8f-POD"/>
             </connections>
-            <point key="canvasLocation" x="296" y="312"/>
+            <point key="canvasLocation" x="-234" y="51"/>
         </tableViewCell>
     </objects>
 </document>

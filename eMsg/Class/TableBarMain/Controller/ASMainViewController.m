@@ -13,6 +13,8 @@
 #import "SLYSettingViewController.h"
 #import "SHMessageTableViewController.h"
 
+#import "SHMsgLoad.h"
+
 #define TABBAR_HEIGHT 55.0f
 
 @interface ASMainViewController () <UIAlertViewDelegate>
@@ -55,7 +57,17 @@
     //[self customNavigationView:0];
     [self setupSubviews];
     
+    //监控是否接收到新短消息
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recvMsg:) name:kMSG_RECV_NOTI object:nil];
+    
     return;
+}
+
+-(void)recvMsg:(NSNotification*) notification
+{
+    //1,红点
+    //2,本地消息通知
+    //3,短信存储
 }
 
 - (void)setupSubviews

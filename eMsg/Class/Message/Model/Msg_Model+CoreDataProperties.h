@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *msg;
 @property (nullable, nonatomic, copy) NSString *phone_num;
 @property (nullable, nonatomic, copy) NSString *platform;
-
+@property (nullable, nonatomic, copy) NSString *platform_id;
 @end
 
 NS_ASSUME_NONNULL_END

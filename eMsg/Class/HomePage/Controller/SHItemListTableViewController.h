@@ -29,4 +29,6 @@ typedef NS_ENUM(NSUInteger, RequestDataType) {
 @property (nonatomic, weak) id<ItemListDelegate> delegate;
 @property (nonatomic, assign) RequestDataType dataType;
 
++(NSArray*)  getItemsFromDB;
++(NSString*) getPlatformNameWithItemID:(NSString *) itemID;
 @end

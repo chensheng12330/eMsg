@@ -7,7 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SHShowMsgInfo.h"
 
 @interface SHMsgSotre : NSObject
+
+//! create
+-(BOOL)creteDataWithMsgInfo:(SHShowMsgInfo*) msgInfo;
+
+//! query
+-(SHShowMsgInfo*) queryMsgWithPhoneNum:(NSString*) phoneNum;
+
+//! update
+-(BOOL) updateMsgWithPhoneNum:(NSString*) phoneNum msgInfo:(SHShowMsgInfo*) msgInfo;
+
+//! delete
+-(BOOL) deleteMsgWithMsgID:(NSString*) msgID;
 
 @end

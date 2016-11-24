@@ -28,5 +28,7 @@
 #import "UIColor+Category.h"
 //#import ""
 
+#import <MagicalRecord/MagicalRecord.h>
+
 #endif
 #endif
