@@ -104,6 +104,9 @@
                          if (msgInfo) {
                              self.latelyMsgInfo = msgInfo;
                              
+                             //存入数据库
+                             
+                             
                              //发送 Noti消息
                              [[NSNotificationCenter defaultCenter] postNotificationName:kMSG_RECV_NOTI object:msgInfo];
                              NSLog(@"MSG: %@",msgStr);

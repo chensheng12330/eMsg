@@ -23,6 +23,8 @@
 #import "TMBSandBox.h"          //应用沙盒路径获取
 #import "SHURLConfig.h"
 
+#import "SHMsgSotre.h"
+
 #pragma mark - TMBFoundation
 
 //#import "NSData+GZIP.h"              //ZIP压缩数据

@@ -49,6 +49,7 @@ static NSString* kRecipesStoreName =@"DataModel.sqlite";
     //[MagicalRecord setupCoreDataStackWithStoreNamed:kRecipesStoreName];
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:kRecipesStoreName];
     
+    //SH_MR_Msg
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];

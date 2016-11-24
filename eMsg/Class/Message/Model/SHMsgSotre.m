@@ -10,6 +10,21 @@
 #import "Msg_Model+CoreDataClass.h"
 
 @implementation SHMsgSotre
+
+static SHMsgSotre *_sharedSHMsgSotre = nil;
+
+#pragma mark - object init
++(SHMsgSotre*) sharedInstance
+{
+    @synchronized(self)
+    {
+        if (nil == _sharedSHMsgSotre ) {
+            _sharedSHMsgSotre = [[self alloc] init];
+        }
+    }
+    return _sharedSHMsgSotre;
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -18,7 +33,6 @@
     }
     return self;
 }
-
 
 
 //! create

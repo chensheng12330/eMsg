@@ -9,7 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "SHShowMsgInfo.h"
 
+#define SH_MR_Msg [SHMsgSotre sharedInstance]
+
 @interface SHMsgSotre : NSObject
+
+
++ (instancetype) sharedInstance;
 
 //! create
 -(BOOL)creteDataWithMsgInfo:(SHShowMsgInfo*) msgInfo;
