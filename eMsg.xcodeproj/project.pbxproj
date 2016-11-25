@@ -65,6 +65,8 @@
 		5877E6461DE6D802003B71E5 /* MagicalRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5877E6451DE6D802003B71E5 /* MagicalRecord.framework */; };
 		5877E64B1DE6DBAF003B71E5 /* Msg_Model+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 5877E6481DE6DBAF003B71E5 /* Msg_Model+CoreDataClass.m */; };
 		5877E64C1DE6DBAF003B71E5 /* Msg_Model+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 5877E64A1DE6DBAF003B71E5 /* Msg_Model+CoreDataProperties.m */; };
+		5877E64F1DE7D9BC003B71E5 /* MagicalRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5877E6451DE6D802003B71E5 /* MagicalRecord.framework */; };
+		5877E6501DE7D9BC003B71E5 /* MagicalRecord.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5877E6451DE6D802003B71E5 /* MagicalRecord.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		589E93791C53676F007384C8 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 589E93781C53676F007384C8 /* CoreText.framework */; };
 		589E937F1C536CE5007384C8 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 589E937E1C536CE5007384C8 /* libiconv.tbd */; };
 		589E93811C536CF7007384C8 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 589E93801C536CF7007384C8 /* libbz2.tbd */; };
@@ -167,6 +169,20 @@
 		E3E0F99D1C5326DB00BA588A /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E3E0F99C1C5326DB00BA588A /* libxml2.tbd */; };
 		E3F12A9F1C3F65F20029391A /* SLYBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F12A9E1C3F65F20029391A /* SLYBaseViewController.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5877E6511DE7D9BC003B71E5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5877E6501DE7D9BC003B71E5 /* MagicalRecord.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		581230D51C488AC100C578A0 /* YZCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZCommon.h; sourceTree = "<group>"; };
@@ -443,6 +459,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5877E64F1DE7D9BC003B71E5 /* MagicalRecord.framework in Frameworks */,
 				58E7FE041D92C7AC00A1052E /* CoreData.framework in Frameworks */,
 				58FA61A31D6F2045009667A6 /* UIKit.framework in Frameworks */,
 				589E93811C536CF7007384C8 /* libbz2.tbd in Frameworks */,
@@ -1124,6 +1141,7 @@
 				880C850B1C32546C00165087 /* Sources */,
 				880C850C1C32546C00165087 /* Frameworks */,
 				880C850D1C32546C00165087 /* Resources */,
+				5877E6511DE7D9BC003B71E5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1149,6 +1167,7 @@
 					};
 					880C850E1C32546C00165087 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = DJYRL6FJ8P;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1478,6 +1497,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = DJYRL6FJ8P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1509,6 +1529,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = DJYRL6FJ8P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

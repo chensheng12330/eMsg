@@ -49,7 +49,12 @@ static NSString* kRecipesStoreName =@"DataModel.sqlite";
     //[MagicalRecord setupCoreDataStackWithStoreNamed:kRecipesStoreName];
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:kRecipesStoreName];
     
-    //SH_MR_Msg
+    ////
+    SHShowMsgInfo *info = [[SHShowMsgInfo alloc] initWithMsgString:@"MSG&12711&13002964529&验证码：379297，请勿将验证码泄露给他人"];
+    [SH_MR_Msg creteDataWithMsgInfo:info];
+    ////
+    
+    
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
