@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define IL_ItemID   (@"ItemID")
-#define IL_ItemName (@"ItemName")
-#define IL_ItemPrice (@"ItemPrice")
-#define IL_ItemType (@"ItemType")
-
 typedef NS_ENUM(NSUInteger, RequestDataType) {
     IL_Type_Area,
     IL_Type_Items,
@@ -29,6 +24,5 @@ typedef NS_ENUM(NSUInteger, RequestDataType) {
 @property (nonatomic, weak) id<ItemListDelegate> delegate;
 @property (nonatomic, assign) RequestDataType dataType;
 
-+(NSArray*)  getItemsFromDB;
-+(NSString*) getPlatformNameWithItemID:(NSString *) itemID;
+
 @end

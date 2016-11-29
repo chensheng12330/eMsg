@@ -24,6 +24,7 @@
 #import "SHURLConfig.h"
 
 #import "SHMsgSotre.h"
+#import "SHPlatformStore.h"
 
 #pragma mark - TMBFoundation
 

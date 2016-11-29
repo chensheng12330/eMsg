@@ -27,13 +27,13 @@
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    //[self createRefreshControl];
+    [self createRefreshControl];
     
-    //[self refreshAction];
+    [self refreshAction];
     //1监听消息通知 [Home发过来的]
     //2加载本地 消息存储文件数据.
     
-    self.dataSource = @[@"1",@"2"];
+    //self.dataSource = @[@"1",@"2"];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -74,61 +74,12 @@
 {
     [self showHudInView:self.view hint:@"正在加载数据..."];
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer.timeoutInterval = 15.0f;
-    
-    [manager GET:[UC getPlatformItemsForUTok:COM.mUser.strUserToken] //
-      parameters:nil
-        progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable responseObject) {
-             
-             [self stopHUB];
-             
-             if (responseObject==NULL || responseObject.length<1) {
-                 
-             }
-             else
-             {
-                 //项目ID&项目名称&项目价格&项目类型\n
-                 
-                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:4];
-                 int code = [COM getCodeFromRespString:respStr];
-                 if (code==1) {
-                     //过期，需要重新登陆.
-                     
-                     return ;
-                 }
-                 else if(code==2){
-                     //请求失败.
-                     SHAlert(@"请求失败,请您重试.");
-                     return ;
-                 }
-                 
-                 NSArray *itemInfoList =  [respStr componentsSeparatedByString:@"\n"];
-                 
-                 NSMutableArray *addSource = [NSMutableArray new];
-                 for (NSString *itemInfo in itemInfoList) {
-                     
-                     NSArray *itemInfoList =  [itemInfo componentsSeparatedByString:@"&"];
+    self.dataSource = (NSArray*)[SH_MR_Msg queryMsgWithPhoneNum:COM.mUser.strUserName];
 
-                 }
-                 
-                 self.dataSource = addSource;
-                 
-                 [self.tableView reloadData];
-             }
-             
-         }
-     
-         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             
-             [self stopHUB];
-             
-             SHAlert(@"服务器请求失败,请检测您的网络.");
-             
-         }
-     
-     ];
+    [self stopHUB];
+    
+    [self.tableView reloadData];
+    return;
 }
 
 #pragma mark - Table view data source
@@ -158,6 +109,8 @@
     }
     
 
+    [cell setCellWithShowMsgInfo:self.dataSource[indexPath.row]];
+    
     // Configure the cell...
     
     return cell;

@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lbMsg;
 @property (weak, nonatomic) IBOutlet UILabel *lbIsRead;
+
+-(void) setCellWithShowMsgInfo:(id)msgInfo;
 @end

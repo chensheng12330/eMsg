@@ -57,11 +57,17 @@ static SHMsgSotre *_sharedSHMsgSotre = nil;
 }
 
 //! query
--(SHShowMsgInfo*) queryMsgWithPhoneNum:(NSString*) phoneNum
+-(NSArray*) queryMsgWithPhoneNum:(NSString*) phoneNum
 {
     NSArray *msgList = [Msg_Model MR_findAll];
     
-    return nil;
+    NSMutableArray *backMsgList = [[NSMutableArray alloc] init];
+    for (Msg_Model *msgModelDB in msgList) {
+        SHShowMsgInfo *msg = [[SHShowMsgInfo alloc] initWithMsg_Model:msgModelDB];
+        [backMsgList addObject:msg];
+    }
+    
+    return backMsgList;
 }
 
 //! update

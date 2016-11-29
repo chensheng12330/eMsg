@@ -20,7 +20,7 @@
 -(BOOL)creteDataWithMsgInfo:(SHShowMsgInfo*) msgInfo;
 
 //! query
--(SHShowMsgInfo*) queryMsgWithPhoneNum:(NSString*) phoneNum;
+-(NSArray*) queryMsgWithPhoneNum:(NSString*) phoneNum;
 
 //! update
 -(BOOL) updateMsgWithPhoneNum:(NSString*) phoneNum msgInfo:(SHShowMsgInfo*) msgInfo;

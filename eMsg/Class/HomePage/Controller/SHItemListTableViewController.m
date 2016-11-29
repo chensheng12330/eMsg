@@ -28,6 +28,12 @@
      self.clearsSelectionOnViewWillAppear = NO;
      //self.automaticallyAdjustsScrollViewInsets=NO;
 
+    if (self.dataType == IL_Type_Area) {
+        self.title = @"地区选择";
+    }
+    else{
+        self.title = @"平台选择";
+    }
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self createRefreshControl];
@@ -156,78 +162,33 @@
 
 -(void) getItemsDataSource
 {
-    [self showHudInView:self.view hint:@"正在加载数据..."];
+    self.dataSource = [SHPlatformStore getPlatformsFromDB];
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer.timeoutInterval = 15.0f;
-    
-    [manager GET:[UC getPlatformItemsForUTok:COM.mUser.strUserToken] //
-      parameters:nil
-        progress:nil
-         success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable responseObject) {
-             
-             [self stopHUB];
-             
-             if (responseObject==NULL || responseObject.length<1) {
-                 SHAlert(@"请求失败,请您重试.");
-                 return ;
-             }
-             else
-             {
-                 //项目ID&项目名称&项目价格&项目类型\n
-                 
-                 NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:4];
-                 int code = [COM getCodeFromRespString:respStr];
-                 if (code==1) {
-                     //过期，需要重新登陆.
-                     
-                     return ;
-                 }
-                 else if(code==2){
-                     //请求失败.
-                     SHAlert(@"请求失败,请您重试.");
-                     return ;
-                 }
-                 
-                 NSArray *itemInfoList =  [respStr componentsSeparatedByString:@"\n"];
-                 
-                 NSMutableArray *addSource = [NSMutableArray new];
-                 for (NSString *itemInfo in itemInfoList) {
-                     
-                     NSArray *itemInfoList =  [itemInfo componentsSeparatedByString:@"&"];
-                     if (itemInfoList.count >3) {
-                         NSMutableDictionary *itemInfo = [NSMutableDictionary new];
-                         [itemInfo setObject:itemInfoList[0] forKey:IL_ItemID];
-                         [itemInfo setObject:itemInfoList[1] forKey:IL_ItemName];
-                         [itemInfo setObject:itemInfoList[2] forKey:IL_ItemPrice];
-                         [itemInfo setObject:itemInfoList[3] forKey:IL_ItemType];
-                         [addSource addObject:itemInfo];
-                     }
-                 }
-                 
-                 if (itemInfoList.count>0) {
-                     
-                     NSString *fileP = [NSString stringWithFormat:@"%@/%@_itemInfoList",SH_LibraryDir,COM.mUser.strUserName];
-                     [addSource writeToFile:fileP atomically:YES];
-                     
-                 }
-                 
-                 self.dataSource = addSource;
-                 
-                 [self.tableView reloadData];
-             }
-             
-         }
-     
-         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             
-             [self stopHUB];
-             
-             SHAlert(@"服务器请求失败,请检测您的网络.");
-             
-         }
-     
-     ];
+    if(self.dataSource==NULL)
+    {
+        [self showHudInView:self.view hint:@"正在加载数据..."];
+        [SH_PS getPlatformList4Net:^(NSArray *list, NSError *error) {
+            
+            [self stopHUB];
+            
+            if (list) {
+                
+                self.dataSource = list;
+                
+                [self.tableView reloadData];
+            }
+            else
+            {
+                if (error.code == 1001 || error.code == 1003) {
+                    SHAlert(error.userInfo[@"error"]);
+                }
+                else if(error.code == 1002)
+                {
+                    //需要重新登陆.
+                }
+            }
+        }];
+    }
 }
 
 #pragma mark - Table view data source
@@ -399,30 +360,5 @@
     [self.tableView reloadData];
 }
 
-+(NSArray*) getItemsFromDB
-{
-    NSString *fileP = [NSString stringWithFormat:@"%@/%@_itemInfoList",SH_LibraryDir,COM.mUser.strUserName];
-     return [[NSArray alloc] initWithContentsOfFile:fileP];
-}
-
-+(NSString*) getPlatformNameWithItemID:(NSString *) itemID
-{
-    if (itemID.length<1) {
-        return nil;
-    }
-    
-    NSArray *saveItems = [self getItemsFromDB];
-    if (saveItems.count<1) {
-        return nil;
-    }
-    
-    for (NSDictionary *info in saveItems) {
-        if ([itemID isEqualToString:info[IL_ItemID]]) {
-            return info[IL_ItemName];
-        }
-    }
-    
-    return nil;
-}
 
 @end

@@ -67,6 +67,7 @@
 		5877E64C1DE6DBAF003B71E5 /* Msg_Model+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 5877E64A1DE6DBAF003B71E5 /* Msg_Model+CoreDataProperties.m */; };
 		5877E64F1DE7D9BC003B71E5 /* MagicalRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5877E6451DE6D802003B71E5 /* MagicalRecord.framework */; };
 		5877E6501DE7D9BC003B71E5 /* MagicalRecord.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5877E6451DE6D802003B71E5 /* MagicalRecord.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5878593A1DED57EF006B1E24 /* SHPlatformStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 587859391DED57EE006B1E24 /* SHPlatformStore.m */; };
 		589E93791C53676F007384C8 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 589E93781C53676F007384C8 /* CoreText.framework */; };
 		589E937F1C536CE5007384C8 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 589E937E1C536CE5007384C8 /* libiconv.tbd */; };
 		589E93811C536CF7007384C8 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 589E93801C536CF7007384C8 /* libbz2.tbd */; };
@@ -247,6 +248,8 @@
 		5877E6481DE6DBAF003B71E5 /* Msg_Model+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Msg_Model+CoreDataClass.m"; sourceTree = "<group>"; };
 		5877E6491DE6DBAF003B71E5 /* Msg_Model+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Msg_Model+CoreDataProperties.h"; sourceTree = "<group>"; };
 		5877E64A1DE6DBAF003B71E5 /* Msg_Model+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Msg_Model+CoreDataProperties.m"; sourceTree = "<group>"; };
+		587859381DED57EE006B1E24 /* SHPlatformStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPlatformStore.h; sourceTree = "<group>"; };
+		587859391DED57EE006B1E24 /* SHPlatformStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHPlatformStore.m; sourceTree = "<group>"; };
 		589E93761C536762007384C8 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		589E93781C53676F007384C8 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		589E937A1C53677D007384C8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -502,6 +505,8 @@
 				5877E5DC1DE68558003B71E5 /* SHMsgInfo.m */,
 				5877E5DE1DE69418003B71E5 /* SHShowMsgInfo.h */,
 				5877E5DF1DE69418003B71E5 /* SHShowMsgInfo.m */,
+				587859381DED57EE006B1E24 /* SHPlatformStore.h */,
+				587859391DED57EE006B1E24 /* SHPlatformStore.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1339,6 +1344,7 @@
 				E3F12A9F1C3F65F20029391A /* SLYBaseViewController.m in Sources */,
 				5877E64C1DE6DBAF003B71E5 /* Msg_Model+CoreDataProperties.m in Sources */,
 				885C9E4D1C32588500351BED /* PQJSONKit.m in Sources */,
+				5878593A1DED57EF006B1E24 /* SHPlatformStore.m in Sources */,
 				8867FCC01C92C930005F82B6 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				8867FCC61C92C930005F82B6 /* UIWebView+AFNetworking.m in Sources */,
 				882780E11C3288F100571919 /* NSURL+TMBFoundation.m in Sources */,

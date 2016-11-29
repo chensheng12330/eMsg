@@ -7,11 +7,30 @@
 //
 
 #import "SHMessageTableViewCell.h"
+#include "SHShowMsgInfo.h"
 
 @implementation SHMessageTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
+}
+
+-(void) setCellWithShowMsgInfo:(SHShowMsgInfo*)msgInfo
+{
+    self.lbPhoneNum.text = msgInfo.strPhoneNum;
+    self.lbDate.text = [msgInfo.dtDate description];
+    self.lbTitle.text = msgInfo.strPlatformName;
+    self.lbMsg.text = msgInfo.strMsgContent;
+    
+    if (msgInfo.isRead) {
+        self.lbIsRead.text = @"已读";
+        self.lbIsRead.backgroundColor = [UIColor blueColor];
+    }
+    else{
+        self.lbIsRead.text = @"未读";
+    }
+    
+    return;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

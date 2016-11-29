@@ -12,6 +12,11 @@
 
 #define DEVLP_KEY  (@"nl%2b%2bva55Az%2bstOKhuti4Hg%3d%3d")
 
+#define IL_ItemID   (@"ItemID")
+#define IL_ItemName (@"ItemName")
+#define IL_ItemPrice (@"ItemPrice")
+#define IL_ItemType (@"ItemType")
+
 //! 静态配置服务端接口
 @interface SHURLConfig : NSObject
 @property (nonatomic, strong) NSString *v; //接口版本

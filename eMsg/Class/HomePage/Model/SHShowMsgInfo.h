@@ -8,6 +8,7 @@
 
 #import "SHMsgInfo.h"
 
+
 @interface SHShowMsgInfo : SHBaseMsgInfo
 
 //! 平台名称
@@ -16,8 +17,14 @@
 //! 接收时间
 @property (nonatomic, retain) NSDate *dtDate;
 
+//! 是否已读.
+@property (nonatomic, assign) BOOL isRead;
+
 -(instancetype) initWithMsgString:(NSString *)msgStr;
 
 //! 根据SHBaseMsgInfo类进行实例化.
 -(instancetype) initWithBaseMsgInfo:(SHBaseMsgInfo *)msgInfo;
+
+//! 根据DB结构表实例化.
+-(instancetype) initWithMsg_Model:(id) msgModel;
 @end

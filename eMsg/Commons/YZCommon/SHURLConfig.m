@@ -81,6 +81,7 @@ static SHURLConfig *_sharedURLConfig= nil;
 
 -(NSString*) getPlatformItemsForUTok:(NSString*) userToken
 {
+    //http://api.ema6.com:20161/Api/userGetItems?Code=UTF8&token=oC4FtAMdhUdBLWk41jfZ7T6lYn6r4d43&tp=ut
     return [NSString stringWithFormat:@"%@/Api/userGetItems?Code=UTF8&token=%@&tp=ut",[self getHost],userToken];
 }
 
