@@ -63,6 +63,10 @@
  第二种： MSG&12711&13002964529&验证码：379297，请勿将验证码泄露给他人[End]RES&12711&15692024415[End]
  3: NOTION&★★★★备用网址★★www.ema6.com:8000。冲值方**,下线分成10点.欢迎定制各种软件。API特惠Q1666371515。提供长期在线号。[End]
  */
+
+#define MAX_T  30
+#define MIN_T  10
+
 -(void) startMsgLoad
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -74,7 +78,7 @@
          success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable responseObject) {
              
              if (responseObject==NULL || responseObject.length<1) {
-                 [self performSelector:@selector(startMsgLoad) withObject:nil afterDelay:5];
+                 [self performSelector:@selector(startMsgLoad) withObject:nil afterDelay:MIN_T];
              }
              else
              {
@@ -87,7 +91,7 @@
                  //False:Session 过期
                  
                  if (![COM getCodeFromRespString:respStr]) {
-                     [self performSelector:@selector(startMsgLoad) withObject:nil afterDelay:5];
+                     [self performSelector:@selector(startMsgLoad) withObject:nil afterDelay:MIN_T];
                      return ;
                  }
                  
@@ -105,8 +109,9 @@
                              self.latelyMsgInfo = msgInfo;
                              
                              //存入数据库
+                             [SH_MR_Msg creteDataWithMsgInfo:msgInfo];
                              
-                             
+
                              //发送 Noti消息
                              [[NSNotificationCenter defaultCenter] postNotificationName:kMSG_RECV_NOTI object:msgInfo];
                              NSLog(@"MSG: %@",msgStr);
@@ -117,10 +122,10 @@
                  }
                  
                  if (isOK == NO) {
-                     [self performSelector:@selector(startMsgLoad) withObject:nil afterDelay:5];
+                     [self performSelector:@selector(startMsgLoad) withObject:nil afterDelay:MIN_T];
                  }
                  else{
-                     
+                     [self performSelector:@selector(startMsgLoad) withObject:nil afterDelay:MAX_T];
                  }
                  /*
                  NSArray *arPhoneList =  [respStr componentsSeparatedByString:@"[End]"];
@@ -140,7 +145,7 @@
      
          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              
-        
+             [self performSelector:@selector(startMsgLoad) withObject:nil afterDelay:MAX_T];
          }
      
      ];

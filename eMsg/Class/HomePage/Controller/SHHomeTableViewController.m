@@ -318,7 +318,11 @@
         [self.navigationController pushViewController:itemListVC animated:YES];
         
     }
-    
+    else
+    {
+        SHShowMsgInfo *info = [[SHShowMsgInfo alloc] initWithMsgString:@"MSG&1271&13548583211&验证码：379297，请勿将验证码泄露给他人"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMSG_RECV_NOTI object:info];
+    }
     return;
 }
 
@@ -349,6 +353,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
         SHSettingTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
         self.dtPlatform = (NSDictionary*)data;
         [cell.lbDetail setText:self.dtPlatform[IL_ItemName]];
+    }
+    else
+    {
+      
     }
 }
 

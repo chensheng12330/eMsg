@@ -256,6 +256,7 @@
 		589E937C1C536CDE007384C8 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		589E937E1C536CE5007384C8 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		589E93801C536CF7007384C8 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		58CB00D91DEEBED5009A2ED1 /* eMsg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = eMsg.entitlements; sourceTree = "<group>"; };
 		58D52A191D9035AD00CE4AC4 /* SHMsgLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMsgLoad.h; sourceTree = "<group>"; };
 		58D52A1A1D9035AD00CE4AC4 /* SHMsgLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMsgLoad.m; sourceTree = "<group>"; };
 		58DB26491C33B73400CBAD58 /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
@@ -565,7 +566,6 @@
 		5875118E1D70412A0034D583 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5875118F1D70412A0034D583 /* SLYUserInfoTableViewController.xib */,
 				587511931D70412A0034D583 /* SLYAboutTableViewController.h */,
 				587511941D70412A0034D583 /* SLYAboutTableViewController.m */,
 				587511951D70412A0034D583 /* SLYAppSettingTableViewController.h */,
@@ -575,6 +575,7 @@
 				5875119D1D70412A0034D583 /* SLYSettingViewController.m */,
 				5875119E1D70412A0034D583 /* SLYUserInfoTableViewController.h */,
 				5875119F1D70412A0034D583 /* SLYUserInfoTableViewController.m */,
+				5875118F1D70412A0034D583 /* SLYUserInfoTableViewController.xib */,
 				587511A01D70412A0034D583 /* SLYWebViewController.h */,
 				587511A11D70412A0034D583 /* SLYWebViewController.m */,
 				587511A21D70412A0034D583 /* SLYWebViewController.xib */,
@@ -915,6 +916,7 @@
 		880C85111C32546C00165087 /* eMsg */ = {
 			isa = PBXGroup;
 			children = (
+				58CB00D91DEEBED5009A2ED1 /* eMsg.entitlements */,
 				58FA624F1D6F3DDB009667A6 /* Class */,
 				884A1F281C3375C600476D28 /* AppDelegate */,
 				885C9E471C32576E00351BED /* Commons (通用) */,
@@ -1176,6 +1178,9 @@
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
 							};
 						};
 					};

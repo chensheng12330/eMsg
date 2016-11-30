@@ -38,8 +38,9 @@
 didReceiveLocalNotification:(UILocalNotification *)notification {
     
     // 图标上的数字减1
-    application.applicationIconBadgeNumber -=1;
+    application.applicationIconBadgeNumber = 0;
     
+    SHAlert(notification.alertBody);
 }
 
 

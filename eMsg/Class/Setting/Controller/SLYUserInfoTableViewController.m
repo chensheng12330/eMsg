@@ -40,7 +40,8 @@
 
 -(void) loadData
 {
-    NSString *tempData     = [[NSString alloc]  initWithContentsOfFile:SH_BundlePath(@"user_info_json",@"json") encoding:4 error:nil];
+    
+    NSString *tempData     = [[NSString alloc]  initWithContentsOfFile:SH_BundlePath(@"user_info",@"json") encoding:4 error:nil];
     NSMutableArray *arData = [NSString parseJSONString:tempData];
     if (arData==NULL && arData.count<1) {
         NSAssert(1, @"---> 无法加载用户信息页面静态表数据,检测user_info.json 文件是否存在&无数据。");
@@ -71,42 +72,47 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return self.dataSrouce.count;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return ((NSArray*)self.dataSrouce[section]).count;
+    if (section==0) {
+        return 4;
+    }
+    else {
+        return 1;
+    }
+    
+    return 0;
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0 && indexPath.row==0) {
-        return 70;
+        return self.myCell0.frame.size.height;
     }
     return 44;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (indexPath.section==0 && indexPath.row==0) {
-        //设置用户信息头
-        NSString *avatarURL = [self.userInfoData valueForKey:@"coverPath"];
-        SLYUser *user = [YZCommon sharedCommon].mUser;
-
-        if(![avatarURL isKindOfClass:[NSNull class]]){
-            
-            //[self.ivImageCell0 sd_setImageWithURL:[NSURL URLWithString:avatarURL] placeholderImage:[UIImage imageNamed:@"noavatar_big"]];
-            
-        }
-        [self.lbTitileCell0 setText:user.strUserName];
-        return self.myCell0;
-    }
-    else if (indexPath.section== (self.dataSrouce.count-1))
-    {
+    if (indexPath.section==1 && indexPath.row==0) {
         return self.myCellLast;
     }
+    
+    if (indexPath.row==0) {
+        //设置用户信息头
+     
+        SLYUser *user = [YZCommon sharedCommon].mUser;
+
+        [self.myCell0.ivImageVIew setImage:[UIImage imageNamed:@"tab_my_sel"]];
+        
+        [self.myCell0.lbDetail setText:user.strUserName];
+        
+        return self.myCell0;
+    }
+
     
     
     //加载其它类型CELL
@@ -118,31 +124,20 @@
     }
     
     [cell.lbTitle setText:self.dataSrouce[indexPath.section][indexPath.row]];
+
     
-    NSInteger section = indexPath.section;
-    NSInteger index   = indexPath.row;
-    
-    if (section==0 &&index==1) {
-        //设置呢称
-        NSString *nickName = [self.userInfoData valueForKey:@"nick"];
-        
-        if(![nickName isKindOfClass:[NSNull class]]){
-            
-            [cell.lbDetail setText:nickName];
-            
-        }
+    if (indexPath.row== 1) {
+        //设置金额
+        [cell.lbDetail setText:[YZCommon sharedCommon].mUser.mUserDetail.strMoney];
     }
-    else if (section==1 && index==0)
+    else if (indexPath.row== 2)
     {
-        //签名
-        NSString *userSign = [self.userInfoData valueForKey:@"usersign"];
+        //充值
         
-        if(![userSign isKindOfClass:[NSNull class]]){
-            
-          //  [cell.lbDetail setText:!userSign?PQLocalizedSring(@"profile_nosign", @"暂无签名"):userSign];
-            
-        }
-        
+    }
+    else if (indexPath.row== 3)
+    {
+        [cell.lbDetail setText:@"当前版本v1.0.1"];
     }
     
     return cell;

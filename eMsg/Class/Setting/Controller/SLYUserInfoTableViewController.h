@@ -7,15 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SHSettingTableViewCell.h"
 
 //! 用户信息页面[编辑]
 @interface SLYUserInfoTableViewController : UITableViewController
 
 /////Cell 0
-@property (strong, nonatomic) IBOutlet UITableViewCell *myCell0;
+@property (strong, nonatomic) IBOutlet SHSettingTableViewCell *myCell0;
 @property (weak, nonatomic) IBOutlet UILabel *lbTitileCell0;
 @property (weak, nonatomic) IBOutlet UIImageView *ivImageCell0;
 /////
+
 
 
 ///Cell last

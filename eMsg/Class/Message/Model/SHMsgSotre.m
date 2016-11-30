@@ -59,7 +59,7 @@ static SHMsgSotre *_sharedSHMsgSotre = nil;
 //! query
 -(NSArray*) queryMsgWithPhoneNum:(NSString*) phoneNum
 {
-    NSArray *msgList = [Msg_Model MR_findAll];
+    NSArray *msgList = [Msg_Model MR_findAllSortedBy:@"date" ascending:NO];
     
     NSMutableArray *backMsgList = [[NSMutableArray alloc] init];
     for (Msg_Model *msgModelDB in msgList) {

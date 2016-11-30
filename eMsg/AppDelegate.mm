@@ -59,7 +59,7 @@ static NSString* kRecipesStoreName =@"DataModel.sqlite";
     //[SH_MR_Msg queryMsgWithPhoneNum:@"13002964529"];
     
     ////
-    SHShowMsgInfo *info = [[SHShowMsgInfo alloc] initWithMsgString:@"MSG&12711&13548583211&验证码：379297，请勿将验证码泄露给他人"];
+    SHShowMsgInfo *info = [[SHShowMsgInfo alloc] initWithMsgString:@"MSG&1271&13548583211&验证码：379297，请勿将验证码泄露给他人"];
     [SH_MR_Msg creteDataWithMsgInfo:info];
     ////
     
