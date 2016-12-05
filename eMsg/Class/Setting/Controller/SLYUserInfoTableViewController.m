@@ -11,7 +11,7 @@
 #import "YZCommon.h"
 #import "PQAlertView.h"
 #import "SHURLConfig.h"
-
+#import "SLYWebViewController.h"
 
 @interface SLYUserInfoTableViewController () <UINavigationControllerDelegate>
 @property (nonatomic, strong) NSArray *dataSrouce;
@@ -108,7 +108,7 @@
 
         [self.myCell0.ivImageVIew setImage:[UIImage imageNamed:@"tab_my_sel"]];
         
-        [self.myCell0.lbDetail setText:user.strUserName];
+        [self.myCell0.lbTitle setText:user.strUserName];
         
         return self.myCell0;
     }
@@ -137,7 +137,8 @@
     }
     else if (indexPath.row== 3)
     {
-        [cell.lbDetail setText:@"当前版本v1.0.1"];
+        NSString *vInfo = [NSBundle mainBundle].infoDictionary[@"CFBundleVersion"];
+        [cell.lbDetail setText:[NSString stringWithFormat:@"v%@",vInfo]];
     }
     
     return cell;
@@ -171,6 +172,12 @@
 }
 */
 
+/*
+ 支付宝充值说明：
+ 第一步：登录您的支付宝直接付款给(最低冲值1元)： em335@qq.com
+ 第二步：付款成功后，点击转账信息->点击创建时间->长按订单号->复制订单号(样本20160402200040022200140041083666)。
+ 第三步：填写支付宝交易号(不要有空格)，点击确定冲值。
+ */
 
 #pragma mark - Table view delegate
 
@@ -179,7 +186,9 @@
     
     if(indexPath.section == 0 & indexPath.row == 0) {
         
-        
+        SLYWebViewController *web = [[SLYWebViewController alloc] init];
+        web.strReqUrl = @"";
+        [self.navigationController pushViewController:web animated:YES];
 //        
 //        PQActionSheet *actionSheet = [[PQActionSheet alloc]initWithTitle:PQLocalizedSring(@"profile_avatar_select", @"请选择一张图片作为头像")
 //                                                                delegate:self
@@ -291,7 +300,7 @@
 //    [msgBox showHUDLoadingWithText:@"正在注销..." inView:self.view];
     
     //发送注销通知
-    //[[NSNotificationCenter defaultCenter] postNotificationName:KNotification_Logout object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:nil];
     
     
 }

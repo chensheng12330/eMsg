@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/sherwin/Library/Developer/Shared/Documentation/DocSets/com.sherwin.emsg.eMsg.docset
+Time: 2016-11-28 06:42:49 +0000

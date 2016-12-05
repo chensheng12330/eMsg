@@ -320,8 +320,11 @@
     }
     else
     {
+        [self.msgLoad startMsgLoad];
+        /*
         SHShowMsgInfo *info = [[SHShowMsgInfo alloc] initWithMsgString:@"MSG&1271&13548583211&验证码：379297，请勿将验证码泄露给他人"];
         [[NSNotificationCenter defaultCenter] postNotificationName:kMSG_RECV_NOTI object:info];
+         */
     }
     return;
 }

@@ -213,7 +213,8 @@
     
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-
+    manager.requestSerializer.timeoutInterval = 30.f;
+    
     [manager GET:[UC getLoginForUsr:_userNameField.text P:_pwdField.text]
       parameters:nil
         progress:nil
@@ -240,7 +241,7 @@
                  NSLog(@"%@",respStr);
                  
                  COM.mUser = [[SLYUser alloc] initWithIniString:respStr];
-                 COM.mUser.strName =_userNameField.text;
+                 COM.mUser.strName = COM.mUser.strUserName = _userNameField.text;
                  COM.mUser.strUserPwd=_pwdField.text;
                  
                  //登陆成功，发送消息通知.

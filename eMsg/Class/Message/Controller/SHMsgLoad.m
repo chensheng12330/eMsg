@@ -71,7 +71,7 @@
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer.timeoutInterval = 15.0f;
-    
+   
     [manager GET:[UC getGetMessage4Token:COM.mUser.strUserToken]
       parameters:nil
         progress:nil
@@ -85,12 +85,14 @@
                  
                  NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:4];
                  
+                 //respStr = @"MSG&18551&15712439849&【小猪巴士】您的验证码为：0770，2分钟内有效，请尽快验证。[End]";
+                 
                  NSLog(@"[respStr] %@",respStr);
                  
                  //错误处理
                  //False:Session 过期
                  
-                 if (![COM getCodeFromRespString:respStr]) {
+                 if ([COM getCodeFromRespString:respStr]) {
                      [self performSelector:@selector(startMsgLoad) withObject:nil afterDelay:MIN_T];
                      return ;
                  }
@@ -99,7 +101,7 @@
                  BOOL isOK = NO;
                  NSArray *msgQueue = [respStr componentsSeparatedByString:@"[End]"];
                  for (NSString *msgStr in msgQueue) {
-                     if ([msgStr hasSuffix:@"MSG"]) {
+                     if ([msgStr hasPrefix:@"MSG"]) {
                          //MSG&12711&13002964529&验证码
                          //MSG&项目ID&号码&短信内容
                          isOK = YES;
