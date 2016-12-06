@@ -44,7 +44,7 @@
 -(void) loadPhoneNumListFromFile
 {
     NSString *fileP = [NSString stringWithFormat:@"%@/%@_phone_num_list",SH_LibraryDir,COM.mUser.strUserName];
-    
+
     self.arPhoneNumList = [[NSMutableArray alloc] initWithContentsOfFile:fileP];
     if (self.arPhoneNumList==NULL) {
         self.arPhoneNumList = [[NSMutableArray alloc] init];
@@ -56,7 +56,7 @@
     if (self.arPhoneNumList==NULL) {
         return;
     }
-    
+
     NSString *fileP = [NSString stringWithFormat:@"%@/%@_phone_num_list",SH_LibraryDir,COM.mUser.strUserName];
     [self.arPhoneNumList writeToFile:fileP atomically:YES];
     return;
@@ -64,24 +64,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.arSP = @[@"[全部]",@"[移动]",@"[联通]",@"[电信]"];
     self.nSpSel = 0;
-    
+
     self.strArea = @"全国";
     self.dtPlatform = nil;
-    
+
     self.clearsSelectionOnViewWillAppear = NO;
     //[self setHidesBottomBarWhenPushed:YES];
     self.msgLoad = [[SHMsgLoad alloc] init];
-    
+
     [self loadPhoneNumListFromFile];
+
+    //启动消息查收.
+    [self.msgLoad startMsgLoad];
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
     //self.tabBarController.tabBar.hidden = NO;
     //[self setHidesBottomBarWhenPushed:YES];
     [self reloadData];
@@ -94,13 +97,13 @@
 }
 
 -(void) reloadData {
-    
+
     self.keys = @[SH_APP_Set_loc_key,SH_APP_Set_sev_key,SH_APP_Set_dev_key];
-    
+
     NSDictionary *arData = [SHJL objectForJsonFileName:@"home_setting"];
-    
+
     self.dataSource = [NSDictionary dictionaryWithDictionary:arData];
-    
+
     [self.tableView reloadData];
     return;
 }
@@ -117,9 +120,9 @@
     if (section == (self.keys.count-1)) {
         return self.arPhoneNumList.count;
     }
-    
+
     return ((NSArray*)self.dataSource[self.keys[section]]).count;
-    
+
 }
 
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -128,37 +131,37 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     if (indexPath.section == (self.keys.count-1)) {
         static NSString *phoneCellIdentifier=@"SHTextInfoTableViewCell";
         SHSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:phoneCellIdentifier];
-        
+
         if(cell == nil) {
-            
+
             cell = [[[NSBundle mainBundle] loadNibNamed:phoneCellIdentifier owner:nil options:nil] firstObject];
-            
+
         }
-        
+
         NSDictionary *phoneInfo = self.arPhoneNumList[indexPath.row];
-        
+
         [cell.lbTitle     setText:phoneInfo[SHModel_PHONE_PhoneNum]];
         [cell.lbDetail setText:[NSString stringWithFormat:@"%@[20分钟过期]",phoneInfo[SHModel_PHONE_ItemName]]];
-        
+
         return cell;
     }
-    
-    
+
+
     NSDictionary *dataInfo = self.dataSource[self.keys[indexPath.section]][indexPath.row];
-    
+
     static NSString *cellIdentifierH = @"SHUserInfoTableViewCell"; //Head Cell
     static NSString *cellIdentifierN = @"SHSwitchTableViewCell";
-    
+
     NSString *cellIdentifier = nil;
-    
-    
+
+
     SHJsonLoadType jlType = [SHJL type:dataInfo];
     NSInteger tid = [SHJL tid:dataInfo];
-    
+
     if (tid == 4) {
         return  self.myCell1;
     }
@@ -166,8 +169,8 @@
     {
         return _myCell2;
     }
-    
-    
+
+
     if (jlType == eJL_switch) {
         cellIdentifier = cellIdentifierN;
     }
@@ -179,21 +182,21 @@
     {
         cellIdentifier = cellIdentifierH;
     }
-    
+
     SHSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
+
     if(cell == nil) {
-        
+
         cell = [[[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:nil options:nil] firstObject];
-        
+
     }
 
     NSString *strTitle = [SHJL name:dataInfo];
     [cell.lbTitle     setText:strTitle];
-    
-    
-    
-    
+
+
+
+
     if (tid==1) {
         //值设置
         [cell.lbDetail  setText:self.arSP[self.nSpSel]];
@@ -207,16 +210,16 @@
         else{
             [cell.lbDetail setText:@"未选"];
         }
-        
+
     }else if (tid>=4||tid<=6){
-       
-        
+
+
         [cell.swSwitch setTag:tid];
         [cell.swSwitch addTarget:self action:@selector(switchActionForValueChange:) forControlEvents:UIControlEventValueChanged];
-        
+
         if (tid==4) {
             //设置value
-            
+
         } else if(tid==5){
             //设置value
         }
@@ -225,11 +228,11 @@
             cell.swSwitch.on = NO;
         }
     }else{
-        
-        
+
+
     }
-    
-    
+
+
     return cell;
 }
 
@@ -237,14 +240,14 @@
 {
     NSString *appName = [YZCommon getAPPName];
     NSString *alertInfo = [NSString stringWithFormat:@"app无法更改消息通知设置,请到IOS系统下 [设置->通知->%@->开启允许通知].",appName];
-    
+
     SHAlert(alertInfo);
     return;
 }
 
 -(void)switchActionForValueChange:(UISwitch*)sender
 {
-    
+
 }
 /*
 // Override to support conditional editing of the table view.
@@ -262,7 +265,7 @@
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
 */
 
@@ -285,22 +288,22 @@
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    
+
+
     NSDictionary *dataInfo = self.dataSource[self.keys[indexPath.section]][indexPath.row];
     NSInteger tid = [SHJL tid:dataInfo];
-    
+
     if (tid==1) {
-        
+
         PQActionSheet *sheet = [[PQActionSheet alloc] initWithTitle:@"运营商类型"
                                                            delegate:self
                                                   cancelButtonTitle:@"取消"
                                                   otherButtonTitles:self.arSP[0],self.arSP[1],self.arSP[2],self.arSP[3],nil];
         sheet.tag = tid;
         [sheet show];
-        
+
     }
     else if (tid==2) {
         SHItemListTableViewController *itemListVC = [[SHItemListTableViewController alloc]init];
@@ -316,11 +319,21 @@
         itemListVC.dataType = IL_Type_Items;
         itemListVC.delegate = self;
         [self.navigationController pushViewController:itemListVC animated:YES];
-        
+
     }
     else
     {
-        [self.msgLoad startMsgLoad];
+        //复制当前电话号码到系统剪切板
+
+        NSDictionary *phoneInfo = self.arPhoneNumList[indexPath.row];
+
+
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = phoneInfo[SHModel_PHONE_PhoneNum];
+        //提示已复制到系统剪切板上.
+
+        //SHAlert(@"");
+        //[self.msgLoad startMsgLoad];
         /*
         SHShowMsgInfo *info = [[SHShowMsgInfo alloc] initWithMsgString:@"MSG&1271&13548583211&验证码：379297，请勿将验证码泄露给他人"];
         [[NSNotificationCenter defaultCenter] postNotificationName:kMSG_RECV_NOTI object:info];
@@ -333,12 +346,12 @@
 clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(buttonIndex>self.arSP.count) { return; }
-    
+
     self.nSpSel = buttonIndex;
-    
+
     SHSettingTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     [cell.lbDetail setText:self.arSP[buttonIndex]];
-    
+
     NSLog(@"PQASheet: %ld Index:%ld", actionSheet.tag, buttonIndex);
 }
 
@@ -347,31 +360,31 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     //NSLog(@"%@",data);
     if (reqType == IL_Type_Area) {
         SHSettingTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-        
+
         self.strArea = (NSString *)data;
         [cell.lbDetail setText:self.strArea];
     }
     else if (reqType == IL_Type_Items){
-        
+
         SHSettingTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
         self.dtPlatform = (NSDictionary*)data;
         [cell.lbDetail setText:self.dtPlatform[IL_ItemName]];
     }
     else
     {
-      
+
     }
 }
 
 - (IBAction)actionGetPhoneNum:(UIButton *)sender {
- 
+
     if (self.dtPlatform == NULL) {
         SHAlert(@"请选择需要注册的平台.");
         return;
     }
-    
+
     [self getPhoneNum];
-    
+
     return;
 }
 
@@ -379,34 +392,34 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 -(void) getPhoneNum
 {
     [self showHudInView:self.view hint:@"正在获取电话号码..."];
-    
+
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer.timeoutInterval = 15.0f;
-    
+
     [manager GET:[UC getPhoneNumForToken:COM.mUser.strUserToken itemID:self.dtPlatform[IL_ItemID] phoneType:self.nSpSel]
       parameters:nil
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, NSData*  _Nullable responseObject) {
-             
+
              [self  hideHud];
-             
+
              if (responseObject==NULL || responseObject.length<1) {
-                 
+
              }
              else
              {
-       
+
                  NSString *respStr = [[NSString alloc] initWithData:responseObject encoding:4];
-                 
+
                  //错误处理
                  //False:Session 过期
-                 
+
                  if ([COM getCodeFromRespString:respStr] != 0) {
                      SHAlert(@"获取失败,请重试...");
                      return ;
                  }
 
-                 
+
                  NSArray *arPhoneList =  [respStr componentsSeparatedByString:@";"];
                  if (arPhoneList.count<1) {
                      //未获取到手机号码
@@ -418,28 +431,28 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
                                                 SHModel_PHONE_CreateTime:[self string4Date:[NSDate date]],
                                                 SHModel_PHONE_ItemName:self.dtPlatform[IL_ItemName]};
                      [self.arPhoneNumList addObject:phoneInfo];
-                     
+
                      NSLog(@"%@",phoneInfo);
                      // 侟入数据
                      [self savePhoneNumListToFile];
-                     
+
                      [self.tableView reloadData];
-                     
+
                      [self.msgLoad stopMsgLoad];
                      [self.msgLoad startMsgLoad];
                  }
-                 
+
              }
-             
+
          }
-     
+
          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             
+
              [self hideHud];
-             
+
              SHAlert(@"服务器请求失败,请检测您的网络.");
          }
-     
+
      ];
 }
 
@@ -448,7 +461,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     static NSDateFormatter * dateFormat=nil;
     dateFormat =  [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
+
     return [dateFormat stringFromDate:date];
 }
 
@@ -457,7 +470,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     static NSDateFormatter * dateFormat=nil;
     dateFormat =  [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
+
     return [dateFormat dateFromString:strDate];
 }
 
