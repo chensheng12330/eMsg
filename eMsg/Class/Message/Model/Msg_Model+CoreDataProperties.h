@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Msg_Model (CoreDataProperties)
 
-+ (NSFetchRequest<Msg_Model *> *)fetchRequest;
++ (NSFetchRequest *)fetchRequest;
 
 @property (nullable, nonatomic, copy) NSNumber *date;
 @property (nullable, nonatomic, copy) NSNumber *is_read;

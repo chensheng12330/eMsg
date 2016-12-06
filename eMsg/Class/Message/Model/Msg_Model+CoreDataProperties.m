@@ -10,7 +10,7 @@
 
 @implementation Msg_Model (CoreDataProperties)
 
-+ (NSFetchRequest<Msg_Model *> *)fetchRequest {
++ (NSFetchRequest *)fetchRequest {
 	return [[NSFetchRequest alloc] initWithEntityName:@"Msg_Model"];
 }
 
